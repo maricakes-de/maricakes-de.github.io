@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>The Flour Box</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title>The Flour Box</title>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       padding: 0;
       font-family: 'Dancing Script', cursive;
-      background-image: url('https://www.transparenttextures.com/patterns/pink-flowers.png');
-      background-color: #ffe6f0;
-      background-repeat: repeat;
-      background-size: contain;
-      color: #4d2c3d;
+      background-image: url('flour.jpg'); /* relative path */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
       text-align: center;
-    }
+      margin: 0;
+      height: 100vh;    }
 
     header {
       background-color: #ffb6c1;
       padding: 40px 20px;
       color: white;
-      animation: fadeIn 2s ease-in-out;
+    }
+
+    body {
+      font-size: 25px;
     }
 
     h1 {
       margin: 0;
-      font-size: 3.5em;
+      font-size: 3em;
     }
 
     p.tagline {
@@ -37,7 +42,6 @@
 
     nav {
       margin: 30px 0;
-      animation: fadeInUp 2s ease;
     }
 
     button {
@@ -46,7 +50,7 @@
       border: none;
       padding: 12px 24px;
       margin: 8px;
-      font-size: 1.2em;
+      font-size: 1em;
       border-radius: 10px;
       cursor: pointer;
     }
@@ -71,7 +75,8 @@
 
     h2 {
       color: #b30059;
-      font-size: 2em;
+      font-size: 1.5em;
+
     }
 
     form {
@@ -97,59 +102,8 @@
       background-color: #ff99aa;
       color: white;
       border: none;
-      font-size: 1.1em;
+      font-size: 1em;
       cursor: pointer;
-    }
-
-    .hero {
-      padding: 40px 20px;
-      animation: fadeIn 3s ease-in;
-    }
-
-    .hero img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 20px;
-      margin: 10px auto;
-      box-shadow: 2px 2px 12px rgba(0,0,0,0.1);
-    }
-
-    .gallery {
-      padding: 40px 20px;
-      background-color: #fff0f8;
-    }
-
-    .gallery img {
-      width: 200px;
-      height: auto;
-      margin: 10px;
-      border-radius: 10px;
-      box-shadow: 1px 1px 8px rgba(0,0,0,0.1);
-    }
-
-    .testimonials {
-      background-color: #ffe6f0;
-      padding: 40px 20px;
-    }
-
-    .testimonial {
-      max-width: 600px;
-      margin: 20px auto;
-      font-style: italic;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes fadeInUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
     }
   </style>
 </head>
@@ -160,11 +114,6 @@
   <p class="tagline">Sweet Moments in Every Slice</p>
 </header>
 
-<div class="hero">
-  <img src="https://images.unsplash.com/photo-1599785209790-80e45c9d7ed4?auto=format&fit=crop&w=1050&q=80" alt="Pretty pink cake">
-  <img src="https://images.unsplash.com/photo-1626151236555-6c6611fc6e1d?auto=format&fit=crop&w=1050&q=80" alt="Cupcakes display">
-</div>
-
 <nav>
   <button onclick="showSection('cakes')">Cakes</button>
   <button onclick="showSection('custom')">Custom Cakes</button>
@@ -173,48 +122,156 @@
   <button onclick="showSection('messageForm')">Send a Message</button>
 </nav>
 
-<div class="gallery">
-  <h2>Gallery</h2>
-  <img src="C:\Users\thefl\TFB\Almond.jpg" alt="Almond Delight Cake">
-  <img src="C:\Users\thefl\TFB\Cookie.jpg" alt="Cookie Crumble Cake">
-  <img src="C:\Users\thefl\TFB\Ferrero.jpg" alt="Ferrero Strawberry Dream">
-  <img src="C:\Users\thefl\TFB\Heart.jpg" alt="Chocolate Strawberry Bliss">
-  <img src="C:\Users\thefl\TFB\Mermaid.jpg" alt="Mermaid Fantasy Cake">
-  <img src="C:\Users\thefl\TFB\Winter.jpg" alt="Winter Wonderland Cake">
-  <img src="C:\Users\thefl\TFB\Berries.jpg" alt="Mixed Berries Custom Cake">
-  <img src="C:\Users\thefl\TFB\Blue.jpg" alt="Blue Bear Cake">
-  <img src="C:\Users\thefl\TFB\Butterfly.jpg" alt="Butterfly Garden Cake">
-  <img src="C:\Users\thefl\TFB\Chanel.jpg" alt="Chanel Theme Cake">
-  <!img src="C:\Users\thefl\TFB\Halloween 2.jpg" alt="Dark Rose Halloween Cake">
-  <img src="C:\Users\thefl\TFB\Halloween.jpg" alt="Halloween Theme Cake">
-  <img src="C:\Users\thefl\TFB\Harry Potter.jpg" alt="Harry Potter Cake">
-  <img src="C:\Users\thefl\TFB\Mother's Day.jpg" alt="Mother's Day Cake">
-  <!img src="C:\Users\thefl\TFB\Assorted Puto.jpg" alt="Assorted Puto">
-  <!img src="C:\Users\thefl\TFB\Choco.jpg" alt="Choco Puto">
-  <!img src="C:\Users\thefl\TFB\Mocha.jpg" alt="Mocha Puto">
-  <!img src="C:\Users\thefl\TFB\Ube.jpg" alt="Ube Cheese Puto">
-  <!img src="C:\Users\thefl\TFB\Brownie.jpg" alt="Fudgy Brownie">
-  <!img src="C:\Users\thefl\TFB\Banana.jpg" alt="Banana Bread">
-  <!img src="C:\Users\thefl\TFB\Eggpie.jpg" alt="Egg Pie">
-  <!img src="C:\Users\thefl\TFB\Orange.jpg" alt="Orange Cupcake">
+<div id="cakes" class="section">
+  <h2>Signature Cakes</h2>
+  <div class="cake">
+    <h3>Toasted Almond Bliss</h3>
+    <p>A light and fluffy cake topped with golden roasted almonds and whipped cream.</p>
+    <img src="C:\Users\thefl\TFB\Almond.jpg" alt="Almond Cake">
+  </div>
+  <div class="cake">
+    <h3>Cookies & Cream Fantasy</h3>
+    <p>Vanilla sponge cake topped with crunchy cookies and creamy chocolate drizzle.</p>
+    <img src="C:\Users\thefl\TFB\Cookie.jpg" alt="Cookie Cake">
+  </div>
+  <div class="cake">
+    <h3>Ferrero Strawberry Delight</h3>
+    <p>A decadent cake topped with Ferrero Rocher chocolates and juicy strawberries.</p>
+    <img src="C:\Users\thefl\TFB\Ferrero.jpg" alt="Ferrero Cake">
+  </div>
+  <div class="cake">
+    <h3>Strawberry Romance</h3>
+    <p>Rich chocolate base crowned with fresh strawberries and chocolate glaze.</p>
+    <img src="C:\Users\thefl\TFB\Heart.jpg" alt="Chocolate Strawberry Cake">
+  </div>
+  <div class="cake">
+    <h3>Mermaid Dream Cake</h3>
+    <p>A magical, pastel-colored cake perfect for kids' birthdays and ocean lovers.</p>
+    <img src="C:\Users\thefl\TFB\Mermaid.jpg" alt="Mermaid Cake">
+  </div>
+  <div class="cake">
+    <h3>Winter Wonderland Cake</h3>
+    <p>Cool tones and snowy touches for a festive and elegant winter celebration.</p>
+    <img src="C:\Users\thefl\TFB\Winter.jpg" alt="Winter Cake">
+  </div>
 </div>
 
-<div class="testimonials">
-  <h2>What Our Customers Say</h2>
-  <div class="testimonial">“Absolutely the best cake I've ever had! So moist and the design was gorgeous.” – Mia R.</div>
-  <div class="testimonial">“We ordered a custom Harry Potter cake and my son loved it. Highly recommended!” – Jake L.</div>
-  <div class="testimonial">“The puto flavors are heavenly. I couldn’t pick a favorite, they were all delicious!” – Anne D.</div>
+<div id="custom" class="section">
+  <h2>Custom Cakes</h2>
+  <div class="cake">
+    <h3>Berry Bouquet</h3>
+    <p>A fresh mix of berries over a soft sponge cake, customizable for any occasion.</p>
+    <img src="C:\Users\thefl\TFB\Berries.jpg" alt="Mixed Berries Cake">
+  </div>
+  <div class="cake">
+    <h3>Blue Bear Cake</h3>
+    <p>Adorable bear-themed cake in calming blue tones, ideal for baby showers and birthdays.</p>
+    <img src="C:\Users\thefl\TFB\Blue.jpg" alt="Blue Bear Cake">
+  </div>
+  <div class="cake">
+    <h3>Butterfly Garden</h3>
+    <p>A delicate cake topped with edible butterflies and floral accents.</p>
+    <img src="C:\Users\thefl\TFB\Butterfly.jpg" alt="Butterfly Cake">
+  </div>
+  <div class="cake">
+    <h3>Chanel-Inspired Elegance</h3>
+    <p>Luxurious black and white cake for fashionistas and glam celebrations.</p>
+    <img src="C:\Users\thefl\TFB\Chanel.jpg" alt="Chanel Cake">
+  </div>
+  <div class="cake">
+    <h3>Crimson Rose Fantasy</h3>
+    <p>A dramatic dark red cake perfect for Halloween or gothic-themed events.</p>
+    <img src="C:\Users\thefl\TFB\Halloween 2.jpg" alt="Bloody Rose Cake">
+  </div>
+  <div class="cake">
+    <h3>Spooky Delight</h3>
+    <p>Fun and festive cake decorated with pumpkins, ghosts, and Halloween charm.</p>
+    <img src="C:\Users\thefl\TFB\Halloween.jpg" alt="Halloween Cake">
+  </div>
+  <div class="cake">
+    <h3>Harry Potter Magic Cake</h3>
+    <p>A magical cake for fans of the wizarding world, complete with Hogwarts elements.</p>
+    <img src="C:\Users\thefl\TFB\Harry Potter.jpg" alt="Harry Potter Cake">
+  </div>
+  <div class="cake">
+    <h3>Sweetest Mom Cake</h3>
+    <p>Floral and heart-themed cake, perfect for celebrating Mother’s Day.</p>
+    <img src="C:\Users\thefl\TFB\Mother's Day.jpg" alt="Mother's Day Cake">
+  </div>
+</div>
+
+<div id="pastries" class="section">
+  <h2>Pastries & Cupcakes</h2>
+  <div class="cake">
+    <h3>Assorted Puto</h3>
+    <p>Soft Filipino steamed rice cakes in flavors like ube cheese, vanilla, chocolate, and more.</p>
+    <img src="C:\Users\thefl\TFB\Assorted Puto.jpg" alt="Assorted Puto">
+  </div>
+  <div class="cake">
+    <h3>Choco Puto</h3>
+    <p>Chocolate-flavored steamed cake with a rich, moist texture.</p>
+    <img src="C:\Users\thefl\TFB\Choco.jpg" alt="Choco Puto">
+  </div>
+  <div class="cake">
+    <h3>Mocha Puto</h3>
+    <p>A soft mocha twist on the classic Filipino puto—flavorful and light.</p>
+    <img src="C:\Users\thefl\TFB\Mocha.jpg" alt="Mocha Puto">
+  </div>
+  <div class="cake">
+    <h3>Ube Cheese Puto</h3>
+    <p>Delicious ube flavor paired with melted cheese—a beloved Filipino classic.</p>
+    <img src="C:\Users\thefl\TFB\Ube.jpg" alt="Ube Puto">
+  </div>
+  <div class="cake">
+    <h3>Fudgy Brownie</h3>
+    <p>Deep chocolate flavor with a chewy center and crispy top—every bite is bliss.</p>
+    <img src="C:\Users\thefl\TFB\Brownie.jpg" alt="Brownie">
+  </div>
+  <div class="cake">
+    <h3>Banana Bread</h3>
+    <p>Moist banana loaf available in plain and chocolate chip—perfect for snacks or gifting.</p>
+    <img src="C:\Users\thefl\TFB\Banana.jpg" alt="Banana Bread">
+  </div>
+  <div class="cake">
+    <h3>Egg Pie</h3>
+    <p>Creamy, custard-like egg filling in a flaky, buttery crust—Filipino bakery classic.</p>
+    <img src="C:\Users\thefl\TFB\Eggpie.jpg" alt="Egg Pie">
+  </div>
+  <div class="cake">
+    <h3>Orange Cupcakes</h3>
+    <p>Fresh and citrusy cupcakes topped with orange zest and creamy frosting.</p>
+    <img src="C:\Users\thefl\TFB\Orange.jpg" alt="Orange Cupcakes">
+  </div>
+</div>
+<!-- Order Form -->
+<div id="orderForm" class="section">
+  <h2>Place an Order</h2>
+  <form>
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <input type="text" name="cake" placeholder="Cake or Pastry Name">
+    <textarea name="details" rows="4" placeholder="Preferred date, flavors, custom details..."></textarea>
+    <input type="submit" value="Submit Order">
+  </form>
+</div>
+
+<!-- Message Form -->
+<div id="messageForm" class="section">
+  <h2>Send a Message</h2>
+  <form>
+    <input type="text" name="name" placeholder="Your Name">
+    <input type="email" name="email" placeholder="Your Email">
+    <textarea name="message" rows="4" placeholder="Ask us anything..."></textarea>
+    <input type="submit" value="Send Message">
+  </form>
 </div>
 
 <script>
   function showSection(id) {
-    const sections = document.querySelectorAll('.section, form');
-    sections.forEach(section => section.style.display = 'none');
-    const target = document.getElementById(id);
-    if (target) {
-      target.style.display = 'block';
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
+    document.querySelectorAll('.section').forEach(section => {
+      section.style.display = 'none';
+    });
+    document.getElementById(id).style.display = 'block';
   }
 </script>
 
