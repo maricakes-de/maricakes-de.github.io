@@ -15,10 +15,10 @@
   <img src="mariCakesLogo.svg" alt="MariCakes Logo" class="logo">
   <div class="title-block">
     <h1 class="site-title">MariCakes</h1>
-    <p class="tagline">Brownies made to order in Bremen, Germany</p>
+    <p class="tagline">Brownies made to order in 28359 Bremen, Germany</p>
   </div>
   <div class="contact-info">
-    <a href="mailto:maricakes@gmail.com" title="Email">📧 maricakes@gmail.com</a><br>
+    📧 maricakes(at)gmail(dot)com</a><br>
     <a href="https://www.instagram.com/maricakes.de" target="_blank" rel="noopener" title="Instagram">📸 @maricakes.de</a><br>
     <a href="https://www.facebook.com/MariCakes28" target="_blank" rel="noopener" title="facebook.com/MariCakes28">📘 Facebook</a>
   </div>
@@ -99,35 +99,19 @@
 </div>
 
 <div id="orderForm" class="section">
-  <section id="bank-payment-info">
-    <h3>Pay by Bank Transfer</h3>
-    <p>Please transfer the payment to the following account:</p>
-      <li>
-        <strong>Account Name:</strong> Mariko Suzuki
-        <button class="copy-btn" data-copy="Mariko Suzuki" aria-label="Copy Account Name">Copy</button>
-      </li>
-      <li>
-        <strong>IBAN:</strong> DE73 1001 1001 2469 1149 73
-        <button class="copy-btn" data-copy="DE73 1001 1001 2469 1149 73" aria-label="Copy IBAN">Copy</button>
-      </li>
-      <li>
-        <strong>BIC/SWIFT:</strong> NTSBDEB1XXX
-        <button class="copy-btn" data-copy="NTSBDEB1XXX" aria-label="Copy BIC/SWIFT">Copy</button>
-      </li>
-    <p id="copyMessage" class="hidden">Copied!</p>
-    <p>After transferring, please enter your bank account name in the form below, and attach a screenshot of the payment confirmation to your email.</p>
-  </section>
+  <p>Please use the form below to compose an email. We will respond with our bank details and pickup address.</p>
   
   <form id="orderForm">
-  <label>Your Order:<textarea name="orderedCakes" id="orderedCakes" rows="4" readonly></textarea></label>
+  <label>Your Order:<textarea name="orderedCakes" id="orderedCakes" rows="4" readonly placeholder="Choose brownies from the left tab."></textarea></label>
   <label for="totalPrice">Total Price (EUR):<input type="text" id="totalPrice" name="totalPrice" readonly value="0.00"></label>
   <label>Comments, custom cake requests: <textarea name="details" rows="4"></textarea></label>
   <label>Paid?<input type="checkbox" id="paidCheckbox" name="paid"></label>
   <label>Payer's Account Name:<input type="text" name="payerAccount" id="payerAccount" disabled></label>
-  <label>Preferred Pick-up Time (Pick up from 28359 Bremen):<input type="datetime-local" id="pickupTime" name="pickupTime"></label>
+  <label>Preferred Pick-up Time:<input type="datetime-local" id="pickupTime" name="pickupTime"></label>
   <label><input type="checkbox" id="dhlDelivery" name="dhlDelivery"> DHL Delivery (+8.50EUR)</label>
   <label>Delivery Address (Bremen only):<textarea name="deliveryAddress" id="deliveryAddress" rows="3" disabled></textarea></label>
   <label>Your Name*: <input type="text" name="name" required></label>
+  <label style="display:none;">Leave this field empty:<input type="text" name="honeypot" autocomplete="off"></label>
   <button type="submit">Open Email</button>
   </form>
 

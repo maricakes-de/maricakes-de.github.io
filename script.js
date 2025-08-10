@@ -88,6 +88,10 @@ document.querySelectorAll('.copy-btn').forEach(button => {
 document.getElementById('orderForm').addEventListener('submit', function(e) {
   e.preventDefault();
   const form = e.target;
+  // Honeypot check - if filled, block submission
+  if (form.honeypot.value.trim() !== '') {
+    return; 
+  }
   // Validate pickup date (at least 1 day ahead, no more than 1 year)
   const pickupTime = new Date(form.pickupTime.value);
   const now = new Date();
@@ -143,6 +147,10 @@ document.getElementById('orderForm').addEventListener('submit', function(e) {
   });
   const subject = encodeURIComponent('MariCakes order');
   const body = encodeURIComponent(bodyLines.join('\n'));
-  const mailtoLink = `mailto:maricakes@gmail.com?subject=${subject}&body=${body}`;
+  const user = 'mari';
+  const domain = 'cakes';
+  const tld = 'gmail.com';
+  const realEmailCorrect = `${'mariCakes'}@${'gmail'}.${'com'}`;
+  const mailtoLink = `mailto:${realEmailCorrect}?subject=${subject}&body=${body}`;
   window.location.href = mailtoLink;
 });
