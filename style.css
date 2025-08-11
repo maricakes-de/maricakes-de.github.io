@@ -9,6 +9,7 @@
 }
 body {
   background-color: var(--lightPetal);
+  background-image: url("marby.avif");
   color: var(--logoText);
   font-family: Tahoma, Verdana, sans-serif;
   text-align: center;
@@ -68,8 +69,7 @@ h3 {
 .contact-info a:hover {
   color: #d45d58; /* a nice pinkish hover */
 }
-
-.flower{
+.icon{
   height: 1em;
   aspect-ratio: 1;
 }
@@ -89,9 +89,11 @@ button {
 }
 .tab-nav button:hover {
   background: var(--logoPetal);
+  background-image: url("marby.avif");
 }
 .tab-nav button.active {
   background-color: var(--lightPetal);
+  background-image: url("marby.avif");
   font-weight: bold;
 }
 .section {
