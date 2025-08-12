@@ -10,10 +10,7 @@ const brownies = [
   { name: "Cookies & Cream Fantasy", desc: "Vanilla sponge topped with cookies and chocolate drizzle.", img: "brownie.png" },
   { name: "Chocolate Indulgence", desc: "Rich chocolate brownie with creamy layers.", img: "brownie.png" },
 ];
-const pricePerCake = 2.5;
-const browniesContainer = document.getElementById('browniesContainer');
 const orderedBrownies= document.getElementById('orderedBrownies');
-const totalSpan = document.getElementById('orderTotal');
 // Generate brownie cards
 brownies.forEach(brownie => {
   const div = document.createElement('div');
@@ -28,7 +25,7 @@ brownies.forEach(brownie => {
     </label>
     </div>
   `;
-  browniesContainer.appendChild(div);
+  document.getElementById('browniesContainer').appendChild(div);
 });
 function updateOrderSummary() {
   let total = 0;
@@ -41,7 +38,7 @@ function updateOrderSummary() {
     if (qty > 0) {
       count += qty;
       orderedList.push(`${qty} ${name}`);
-      total += qty * pricePerCake;
+      total += 2.5 * qty;
     }
   });
   orderedBrownies.textContent = orderedList.join('\n');
@@ -55,84 +52,88 @@ document.querySelectorAll('.brownie-qty').forEach(input => {
 document.querySelectorAll('.copy-btn').forEach(button => {
   button.addEventListener('click', () => {
     navigator.clipboard.writeText(button.dataset.copy).then(() => {
-      button.classList.add('copied');
-      setTimeout(() => button.classList.remove('copied'), 1500);
+      button.textContent = 'Copied';
+      setTimeout(() => {button.textContent = 'Copy'}, 1500);
     });
   });
 });
-document.getElementById('orderForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const form = e.target;
-  // Honeypot check - if filled, block submission
-  if (form.honeypot.value.trim() !== '') {
-    return; 
-  }
-  // Validate pickup date (at least 1 day ahead, no more than 1 year)
-  const pickupTime = new Date(form.pickupTime.value);
-  const now = new Date();
-  const minTime = new Date(now);
-  minTime.setDate(now.getDate() + 1);
-  const maxTime = new Date(now);
-  maxTime.setFullYear(now.getFullYear() + 1);
-  console.log('min',minTime)
-  console.log('pick',pickupTime)
-  console.log('max',maxTime)
-  if (pickupTime < minTime) {
-    alert('Pick-up time must be at least 1 day in the future.');
-    return;
-  }
-  if (pickupTime > maxTime) {
-    alert('Pick-up time must be within 1 year.');
-    return;
-  }
-  const hour = pickupTime.getHours();
-  if (hour < 9) {
-    alert('Pick-up time must be later than 9:00.');
-    return;
-  }
-  const minute = pickupTime.getMinutes();
-  if (hour > 16 && minute > 0) {
-    alert('Pick-up time must be earlier than 9:00.');
-    return;
-  }
-  // Collect all input, textarea, and select elements except the submit button
-  const fields = form.querySelectorAll('input:not([type="submit"]), textarea, select');
-  let bodyLines = [];
-  const orderedBrownies = document.getElementById('orderedBrownies');
-  const totalPrice = document.getElementById('totalPrice');
-  if (orderedBrownies && orderedBrownies.textContent.trim()) {
-    bodyLines.push(`Brownie order:\n${orderedBrownies.textContent.trim()}`);
-  }
-  if (totalPrice && totalPrice.textContent.trim()) {
-    bodyLines.push(`Brownie price: ${totalPrice.textContent.trim()}`);
-  }
-  fields.forEach(field => {
-    if (field.disabled) return;
-    let label = '';
-    // Try to find label text for the field
-    const labelElem = form.querySelector(`label[for="${field.id}"]`) || field.closest('label');
-    if (labelElem) {
-      // Remove the input element text from label, just get text content
-      label = labelElem.textContent.replace(field.value, '').trim();
-    } else {
-      label = field.name || field.id || 'Field';
+document.querySelectorAll('label').forEach(label => {
+  if (label.textContent.trim().startsWith('Preferred pick-up time')) {
+    const input = label.querySelector('input[type="datetime-local"]');
+    if (input) {
+      const now = new Date();
+      now.setDate(now.getDate() + 2);
+      now.setHours(16, 0, 0, 0);
+      const yyyy = now.getFullYear();
+      const mm = String(now.getMonth() + 1).padStart(2, '0');
+      const dd = String(now.getDate()).padStart(2, '0');
+      const hh = String(now.getHours()).padStart(2, '0');
+      const min = String(now.getMinutes()).padStart(2, '0');
+      input.value = `${yyyy}-${mm}-${dd}T${hh}:${min}`;
     }
-    let value;
-    if (field.type === 'checkbox') {
-      value = field.checked ? 'Yes' : 'No';
+  }
+});
+const form = document.getElementById("orderForm");
+function buildMessage() {
+  const lines = [];
+  form.querySelectorAll("label").forEach(label => {
+    if (label.textContent.trim().startsWith('Leave this field empty')) return;
+    const control = label.control || label.querySelector("input, textarea");
+    if (!control) return;
+    let value = "";
+    if (control.type === "checkbox") {
+      value = control.checked ? "Yes" : "No";
+    } else if (control.type === "datetime-local" && control.value) {
+      value = new Date(control.value).toLocaleString('en-US', {
+        year: 'numeric', month: 'long', day: 'numeric',
+        hour: '2-digit', minute: '2-digit', hour12: false
+      });
     } else {
-      value = field.value.trim();
+      value = control.value || control.placeholder || "";
     }
-    if (!value) return; 
-    console.log('val',value)
-    bodyLines.push(`${label} ${value}`);
+    lines.push(`${label.textContent.trim()} ${value}`);
   });
-  const subject = encodeURIComponent('MariCakes order');
-  const body = encodeURIComponent(bodyLines.join('\n'));
-  const user = 'mari';
-  const domain = 'cakes';
-  const tld = 'gmail.com';
-  const realEmailCorrect = `${'mariCakes'}@${'gmail'}.${'com'}`;
-  const mailtoLink = `mailto:${realEmailCorrect}?subject=${subject}&body=${body}`;
-  window.location.href = mailtoLink;
+  return lines.join("\n");
+}
+const timeInput = form.querySelector('input[type="datetime-local"]');
+timeInput.addEventListener('input', () => {
+  timeInput.setCustomValidity('');
+});
+form.addEventListener('submit', e => {
+  e.preventDefault(); // prevent page refresh
+  // Validate preferred pick-up time
+  const timeValue = timeInput.value;
+  if (timeValue) {
+    const pickedTime = new Date(timeValue);
+    const now = new Date();
+    const minTime = new Date(now.getTime() + 48 * 60 * 60 * 1000); // 48 hours later
+    const maxTime = new Date(now);
+    maxTime.setMonth(maxTime.getMonth() + 6); // 6 months later
+    const hours = pickedTime.getHours();
+    if (pickedTime < minTime) {
+      timeInput.setCustomValidity("Pick-up time must be at least 48 hours from now.");
+    } else if (pickedTime > maxTime) {
+      timeInput.setCustomValidity("Pick-up time must be within 6 months from now.");
+    } else if (hours < 9) {
+      timeInput.setCustomValidity("Pick-up time must be after 09:00.");
+    } else if (hours >= 17) {
+      timeInput.setCustomValidity("Pick-up time must be before 17:00.");
+    } else {
+      timeInput.setCustomValidity(""); // clear error
+    }
+  } else {
+    timeInput.setCustomValidity("Pick-up time is required.");
+  }
+  if (!form.reportValidity()) return;
+  const buttons = form.querySelectorAll('button');
+  const clickedButton = e.submitter;
+  if (clickedButton === buttons[0]) {
+    // Open email
+    const id = "maricakes"
+    const mailtoLink = 
+    window.location.href = `mailto:${id}@gmail.com?subject=MariCakes order&body=${encodeURIComponent(buildMessage())}`;
+  } else if (clickedButton === buttons[1]) {
+    // Copy to clipboard
+    navigator.clipboard.writeText(buildMessage());
+  }
 });

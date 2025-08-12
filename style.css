@@ -64,6 +64,7 @@ a:hover {
 }
 button {
   cursor: pointer;
+  background-color: var(--logoBack);
 }
 .tab-nav {
   display: flex;
@@ -110,11 +111,37 @@ button {
   border: 1px solid var(--logoText);
   text-align: center;
   border-radius: .5em;
-  background: var(--logoBack);
 }
 .brownie img {
   width: 13em;
 }
+fieldset {
+  border: 1px solid var(--logoText);
+  border-radius: .5em;
+}
+textarea, input[type="text"] {
+  width: 100%;
+}
+textarea[readonly], input[readonly] {
+  border: none;
+  background: transparent;
+  resize: none;       /* For textarea */
+  font-family: monospace; /* Like <pre> */
+  font-size: 1em;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: visible;
+  cursor: default;
+}
+
+/* Remove focus outline for read-only inputs if you want */
+textarea[readonly]:focus, input[readonly]:focus {
+  outline: none;
+}
+
 .foot{
   margin: 2em;
 }

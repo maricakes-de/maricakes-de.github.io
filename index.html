@@ -107,41 +107,43 @@
 
 <div id="order-section" class="section">
   <section id="bank-payment-info">
-    <h3>Pay by Bank Transfer</h3>
-    <p>Please transfer the payment to the following account:</p>
+    <p>Please transfer your payment to the following account:</p>
       <li>
-        <strong>Account Name:</strong> Mariko Suzuki
+        <strong>Account type:</strong> Business
+      </li>
+      <li>
+        <strong>Account name:</strong> Mariko Suzuki
         <button class="copy-btn" data-copy="Mariko Suzuki" aria-label="Copy Account Name">Copy</button>
       </li>
       <li>
-        <strong>IBAN:</strong> DE73 1001 1001 2469 1149 73
-        <button class="copy-btn" data-copy="DE73 1001 1001 2469 1149 73" aria-label="Copy IBAN">Copy</button>
+        <strong>IBAN:</strong> DE02 1001 1001 2506 4491 26
+        <button class="copy-btn" data-copy="DE02 1001 1001 2506 4491 26" aria-label="Copy IBAN">Copy</button>
       </li>
-      <li>
-        <strong>BIC/SWIFT:</strong> NTSBDEB1XXX
-        <button class="copy-btn" data-copy="NTSBDEB1XXX" aria-label="Copy BIC/SWIFT">Copy</button>
-      </li>
-    <p>After transferring, please enter your bank account name in the form below, and attach a screenshot of the payment confirmation to your email.</p>
+    <p>After transferring, please enter your bank account name in the form below, and attach a copy of the payment confirmation to your message.</p>
   </section>
   <p>Use this form to create your order message.<br>
-  You can send it to us by email, or copy to your clipboard and send via Facebook or Instagram.<br> We'll get back to you with our bank details and pickup address.</p>
-  <div>
-    <label>Brownie order:
-    <pre id="orderedBrownies">Choose brownies from the left tab.</pre></label>
-    <label "totalPrice">Brownie price<br>
-    <span id="totalPrice">0.00 EUR</span><br>
-    <form>
-      <label>Comments, custom cake requests<br>
-      <textarea name="details" rows="4"></textarea></label><br><br>
-      <label>Preferred pick-up time<br>
-      <input type="datetime-local" id="pickupTime" name="pickupTime"></label><br><br>
-      <label>Your name*<br> 
-      <input type="text" name="name" required></label><br><br>
-      <label style="display:none;">Leave this field empty<input type="text" name="honeypot" autocomplete="off"></label>
-      <button type="submit">Open email</button> or
-      <button type="submit">Copy to clipboard</button>
-    </form>
-  </div>
+  You can send it to us by email, or copy to your clipboard and send via Facebook or Instagram.<br> We'll get back to you with our pickup address.</p>
+  <form id="orderForm">
+  <fieldset>
+    <legend>Your order:</legend>
+    <label>Chosen brownies:<br>
+    <textarea readonly placeholder="No brownies selected."></textarea></label><br>
+    <label>Total price:<br>
+    <input type="text" value="0.00 EUR" readonly></label><br><br>
+    <label>Paid:<input type="checkbox"></label><br>
+    <label>Payer's Account Name:<br>
+    <input type="text" disabled placeholder="None"></label><br><br>
+    <label>Comments, custom cake requests:<br>
+    <textarea rows="4" placeholder="None"></textarea></label><br><br>
+    <label>Preferred pick-up time*:<br>
+    <input type="datetime-local"></label><br><br>
+    <label>Your name*:<br> 
+    <input type="text" required></label><br><br>
+    <label style="display:none;">Leave this field empty<input type="text" autocomplete="off"></label>
+    <button type="submit">Open email</button> or
+    <button type="submit">Copy</button>
+  </fieldset>
+  </form>
 </div>
 <p class="foot">&copy; MariCakes 2025</p>
 <script defer src="script.js"></script>
