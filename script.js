@@ -4,23 +4,6 @@ function showSection(sectionId, btn) {
   document.querySelectorAll('.tab-nav button').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
 }
-const paidCheckbox = document.getElementById('paidCheckbox');
-const payerAccount = document.getElementById('payerAccount');
-paidCheckbox.addEventListener('change', () => {
-  payerAccount.disabled = !paidCheckbox.checked;
-  if (!paidCheckbox.checked) {
-    payerAccount.value = ''; // clear input when unchecked
-  }
-});
-const deliveryCheckbox = document.getElementById('dhlDelivery');
-const addressInput = document.getElementById('deliveryAddress');
-deliveryCheckbox.addEventListener('change', () => {
-  if (deliveryCheckbox.checked) {
-    addressInput.disabled = false;
-  } else {
-    addressInput.disabled = true;
-  }
-});
 const brownies = [
   { name: "Toasted Almond Bliss", desc: "Light and fluffy brownie topped with roasted almonds.", img: "brownie.png" },
   { name: "Carrot Crunch", desc: "Carrot, almond, and cream.", img: "brownie.png" },
@@ -61,15 +44,6 @@ function updateOrderSummary() {
       total += qty * pricePerCake;
     }
   });
-  // Add DHL delivery cost if selected
-  const dhlDeliveryChecked = document.getElementById('dhlDelivery').checked;
-  const addressInput = document.getElementById('deliveryAddress');
-  addressInput.disabled = !dhlDeliveryChecked;
-  if (dhlDeliveryChecked) {
-    total += 8.50;
-  } else {
-    addressInput.value = ''; // Clear address if not delivering
-  }
   orderedCakesTextarea.value = orderedList.join('\n');
   document.getElementById('totalPrice').value = total.toFixed(2);
   document.getElementById("basketCount").textContent = count;
@@ -78,7 +52,6 @@ function updateOrderSummary() {
 document.querySelectorAll('.brownie-qty').forEach(input => {
   input.addEventListener('input', updateOrderSummary);
 });
-document.getElementById('dhlDelivery').addEventListener('change', updateOrderSummary);
 document.querySelectorAll('.copy-btn').forEach(button => {
   button.addEventListener('click', () => {
     navigator.clipboard.writeText(button.dataset.copy).then(() => {
@@ -126,7 +99,6 @@ document.getElementById('orderForm').addEventListener('submit', function(e) {
   const fields = form.querySelectorAll('input:not([type="submit"]), textarea, select');
   let bodyLines = [];
   fields.forEach(field => {
-    // Ignore disabled fields (e.g. payerAccount when disabled)
     if (field.disabled) return;
     let label = '';
     // Try to find label text for the field
