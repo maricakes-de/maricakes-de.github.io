@@ -22,10 +22,10 @@ deliveryCheckbox.addEventListener('change', () => {
   }
 });
 const brownies = [
-  { name: "Toasted Almond Bliss", desc: "Light and fluffy brownie topped with roasted almonds.", img: "brownie.jpg" },
-  { name: "Carrot Crunch", desc: "Carrot, almond, and cream.", img: "brownie.jpg" },
-  { name: "Cookies & Cream Fantasy", desc: "Vanilla sponge topped with cookies and chocolate drizzle.", img: "brownie.jpg" },
-  { name: "Chocolate Indulgence", desc: "Rich chocolate brownie with creamy layers.", img: "brownie.jpg" },
+  { name: "Toasted Almond Bliss", desc: "Light and fluffy brownie topped with roasted almonds.", img: "brownie.png" },
+  { name: "Carrot Crunch", desc: "Carrot, almond, and cream.", img: "brownie.png" },
+  { name: "Cookies & Cream Fantasy", desc: "Vanilla sponge topped with cookies and chocolate drizzle.", img: "brownie.png" },
+  { name: "Chocolate Indulgence", desc: "Rich chocolate brownie with creamy layers.", img: "brownie.png" },
 ];
 const pricePerCake = 2.5;
 const browniesContainer = document.getElementById('browniesContainer');
@@ -36,12 +36,14 @@ brownies.forEach(brownie => {
   const div = document.createElement('div');
   div.className = 'brownie';
   div.innerHTML = `
+    <img src="${brownie.img}" alt="${brownie.name}">
+    <div class="textBox">
     <h3>${brownie.name}</h3>
     <p>${brownie.desc}</p>
-    <img src="${brownie.img}" alt="${brownie.name}">
     <label>Qty:
       <input type="number" class="brownie-qty" data-name="${brownie.name}" min="0" max="10" value="0">
     </label>
+    </div>
   `;
   browniesContainer.appendChild(div);
 });

@@ -1,8 +1,8 @@
 :root {
   --logoPetal: hsl(18, 61%, 87%);
   --logoSpatula: hsl(14, 63%, 76%);
-  --logoBack: white; /*hsl(39, 56%, 87%);*/
-  --logoText: hsl(6, 79%, 75%);
+  --logoBack: hsl(39, 56%, 97%);
+  --logoText: hsl(6, 79%, 70%);
   --logoShadow: hsl(18, 73%, 84%);
   --logoWood: hsl(32, 55%, 56%);
   --lightPetal: hsl(12, 78%, 93%);
@@ -11,42 +11,43 @@ body {
   background-color: var(--lightPetal);
   background-image: url("marble.avif");
   color: var(--logoText);
-  font-family: "Segoe UI Rounded", sans-serif;
   font-family: 'Varela Round';
   text-align: center;
   margin: 0;
 }
 header, h1, h2, h3 {
   font-family: "Style Script", cursive;
+  margin: 0;
 }
 header {
   background-color: var(--logoBack);
   color: var(--logoText);
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
+  padding: 1em;
 }
 h1 {
+  font-size: 4em;
   color: var(--logoText);
 }
 h2 {
+  font-size: 1.7em;
   color: var(--logoText);
-  margin: 0;
 }
 h3 {
   font-size: 1.3em;
   color: var(--logoText);
 }
 .logo {
-  height: 7em;
-  transform: none;
-  padding: 1em;
-  flex-shrink: 0; 
+  width: 13em;
 }
-.title-block {
-  text-align: center;
-  flex-grow: 1;
+.contact{
+  font-family: 'Varela Round';
+}
+.right-dummy {
+  width: 13em; 
+  flex-shrink: 100; 
 }
 a {
   color: var(--logoText);
@@ -68,9 +69,9 @@ button {
 }
 .tab-nav button {
   flex: 1;
-  background-color: white;
+  background-color: var(--logoBack);
   border: none;
-  border-radius: 1em 1em 0em 0em;
+  border-radius: .5em .5em 0em 0em;
 }
 .tab-nav button:hover {
   background: var(--logoPetal);
@@ -98,19 +99,17 @@ button {
 }
 .brownies-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, 15em);
+  gap: 1em;
+  margin: 1em;
 }
-.brownie {
-  border: 1px solid #ccc;
-  padding: 10px;
+.textBox {
+  min-height: 13em;
+  border: 1px solid var(--logoText);
   text-align: center;
-  border-radius: 8px;
-  background: #fafafa;
+  border-radius: .5em;
+  background: var(--logoBack);
 }
 .brownie img {
-  max-width: 150px;
-  display: block;
-  margin: auto;
-  border-radius: 4px;
+  width: 13em;
 }
