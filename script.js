@@ -12,7 +12,7 @@ const brownies = [
 ];
 const pricePerCake = 2.5;
 const browniesContainer = document.getElementById('browniesContainer');
-const orderedCakesTextarea = document.getElementById('orderedCakes');
+const orderedBrownies= document.getElementById('orderedBrownies');
 const totalSpan = document.getElementById('orderTotal');
 // Generate brownie cards
 brownies.forEach(brownie => {
@@ -40,12 +40,12 @@ function updateOrderSummary() {
     let name = input.dataset.name;
     if (qty > 0) {
       count += qty;
-      orderedList.push(`${name} x${qty}`);
+      orderedList.push(`${qty} ${name}`);
       total += qty * pricePerCake;
     }
   });
-  orderedCakesTextarea.value = orderedList.join('\n');
-  document.getElementById('totalPrice').value = total.toFixed(2);
+  orderedBrownies.textContent = orderedList.join('\n');
+  document.getElementById('totalPrice').textContent= total.toFixed(2)+" EUR";
   document.getElementById("basketCount").textContent = count;
 }
 // Attach listeners
@@ -98,6 +98,14 @@ document.getElementById('orderForm').addEventListener('submit', function(e) {
   // Collect all input, textarea, and select elements except the submit button
   const fields = form.querySelectorAll('input:not([type="submit"]), textarea, select');
   let bodyLines = [];
+  const orderedBrownies = document.getElementById('orderedBrownies');
+  const totalPrice = document.getElementById('totalPrice');
+  if (orderedBrownies && orderedBrownies.textContent.trim()) {
+    bodyLines.push(`Brownie order:\n${orderedBrownies.textContent.trim()}`);
+  }
+  if (totalPrice && totalPrice.textContent.trim()) {
+    bodyLines.push(`Brownie price: ${totalPrice.textContent.trim()}`);
+  }
   fields.forEach(field => {
     if (field.disabled) return;
     let label = '';

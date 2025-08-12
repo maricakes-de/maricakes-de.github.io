@@ -13,7 +13,7 @@
 <body>
 <header>
   <img src="mariCakesLogo.svg" alt="MariCakes Logo" class="logo">
-  <div>
+  <div class="title-block">
     <h1>MariCakes</h1>
     <h3><i>Brownies made to order in 28359 Bremen, Germany.</i></h3>
     <div class="contact">
@@ -33,7 +33,7 @@
 <nav class="tab-nav">  
   <button class="active" onclick="showSection('brownies', this)"><h2>Brownies<img src="flower.svg" alt="flower" class="icon"></h2></button>
   <button onclick="showSection('custom', this)"><h2>Custom cakes<img src="flower.svg" alt="flower" class="icon"></h2></button>
-  <button onclick="showSection('orderForm', this)"><h2>Place order (<span id="basketCount">0</span>)</h2></button>
+  <button onclick="showSection('order-section', this)"><h2>Place order (<span id="basketCount">0</span>)</h2></button>
 </nav>
 
 <div id="brownies" class="section active-section">
@@ -105,25 +105,28 @@
   </div>
 </div>
 
-<div id="orderForm" class="section">
-  <p>Use this form to create your order message. You can send it by email or copy to your clipboard and send to us on Facebook or Instagram. We'll get back to you with our bank details and pickup address.</p>
-  <form id="orderForm">
-  <label>Brownie order:<br>
-  <textarea name="orderedCakes" id="orderedCakes" rows="4" readonly placeholder="Choose brownies from the left tab."></textarea></label><br><br>
-  <label for="totalPrice">Brownie price<br>
-  <input type="text" id="totalPrice" name="totalPrice" readonly value="0.00">EUR</label><br><br>
-  <label>Comments, custom cake requests<br>
-  <textarea name="details" rows="4"></textarea></label><br><br>
-  <label>Preferred pick-up time<br>
-  <input type="datetime-local" id="pickupTime" name="pickupTime"></label><br><br>
-  <label>Your name*<br> 
-  <input type="text" name="name" required></label><br><br>
-  <label style="display:none;">Leave this field empty<input type="text" name="honeypot" autocomplete="off"></label>
-  <button type="submit">Open email</button> or
-  <button type="submit">Copy to clipboard</button>
-  </form>
+<div id="order-section" class="section">
+  <p>Use this form to create your order message.<br>
+  You can send it to us by email, or copy to your clipboard and send via Facebook or Instagram.<br> We'll get back to you with our bank details and pickup address.</p>
+  <div>
+    <label>Brownie order:
+    <pre id="orderedBrownies">Choose brownies from the left tab.</pre></label>
+    <label "totalPrice">Brownie price<br>
+    <span id="totalPrice">0.00 EUR</span><br>
+    <form>
+      <label>Comments, custom cake requests<br>
+      <textarea name="details" rows="4"></textarea></label><br><br>
+      <label>Preferred pick-up time<br>
+      <input type="datetime-local" id="pickupTime" name="pickupTime"></label><br><br>
+      <label>Your name*<br> 
+      <input type="text" name="name" required></label><br><br>
+      <label style="display:none;">Leave this field empty<input type="text" name="honeypot" autocomplete="off"></label>
+      <button type="submit">Open email</button> or
+      <button type="submit">Copy to clipboard</button>
+    </form>
+  </div>
 </div>
-<p> &copy; MariCakes 2025
+<p class="foot">&copy; MariCakes 2025</p>
 <script defer src="script.js"></script>
 </body>
 </html>

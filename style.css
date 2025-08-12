@@ -12,7 +12,6 @@ body {
   background-image: url("marble.avif");
   color: var(--logoText);
   font-family: 'Varela Round';
-  text-align: center;
   margin: 0;
 }
 header, h1, h2, h3 {
@@ -23,31 +22,34 @@ header {
   background-color: var(--logoBack);
   color: var(--logoText);
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
   padding: 1em;
+  text-align: center;
+  justify-content: center;
 }
 h1 {
-  font-size: 4em;
   color: var(--logoText);
 }
 h2 {
-  font-size: 1.7em;
   color: var(--logoText);
 }
 h3 {
-  font-size: 1.3em;
   color: var(--logoText);
 }
 .logo {
-  width: 13em;
+  width: 8em;
+  margin: 0 0 0 1em;
 }
 .contact{
   font-family: 'Varela Round';
 }
+.title-block{
+  flex-grow: 1; 
+}
 .right-dummy {
-  width: 13em; 
-  flex-shrink: 100; 
+  width: 8em; 
+  flex-shrink: 1; 
 }
 a {
   color: var(--logoText);
@@ -84,6 +86,7 @@ button {
 }
 .section {
   display: none;
+  margin: 2em;
 }
 .active-section {
   display: block;
@@ -94,14 +97,13 @@ button {
 .cake img {
   max-width: 100%;
   max-height: 300px;
-  border-radius: 15px;
+  border-radius: .5em;
   box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
 }
 .brownies-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 15em);
   gap: 1em;
-  margin: 1em;
 }
 .textBox {
   min-height: 13em;
@@ -112,4 +114,7 @@ button {
 }
 .brownie img {
   width: 13em;
+}
+.foot{
+  margin: 2em;
 }
