@@ -1,7 +1,7 @@
 :root {
   --logoPetal: hsl(18, 61%, 87%);
   --logoSpatula: hsl(14, 63%, 76%);
-  --logoBack: hsl(39, 56%, 97%);
+  --logoBack: hsl(39, 56%, 95%);
   --logoText: hsl(6, 79%, 70%);
   --logoShadow: hsl(18, 73%, 84%);
   --logoWood: hsl(32, 55%, 56%);
@@ -71,13 +71,13 @@ nav button {
   border: none;
   border-radius: .5em .5em 0em 0em;
   font-family: "Style Script", cursive;
-  font-size: 1.25em;
+  font-size: 1.5em;
   color: var(--logoText);
 }
 nav button.active {
   background-color: var(--lightPetal);
   background-image: url("marble.avif");
-  font-weight: bold;
+  text-decoration: underline;
 }
 nav button:hover {
   background: var(--logoPetal);
@@ -117,9 +117,6 @@ textarea, input[type="text"] {
 textarea[readonly], input[readonly] {
   border: none;
   background: transparent;
-}
-#orderedBrownies {
-  height: 10em;
 }
 .honeypot {
   position: absolute;

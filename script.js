@@ -39,8 +39,8 @@ function updateOrderSummary() {
   });
   const orderedBrownies = document.getElementById('orderedBrownies');
   orderedBrownies.textContent = orderedList.join('\n');
-  document.getElementById('totalPrice').value = total.toFixed(2)+" EUR";
-  document.getElementById("basketCount").value = count;
+  document.getElementById('totalPrice').textContent = total.toFixed(2);
+  document.getElementById("basketCount").textContent = count;
 }
 // Attach listeners
 document.querySelectorAll('.brownie-qty').forEach(input => {
@@ -51,7 +51,7 @@ document.querySelectorAll('label').forEach(label => {
     const input = label.querySelector('input[type="datetime-local"]');
     if (input) {
       const now = new Date();
-      now.setDate(now.getDate() + 2);
+      now.setDate(now.getDate() + 3);
       now.setHours(16, 0, 0, 0);
       const yyyy = now.getFullYear();
       const mm = String(now.getMonth() + 1).padStart(2, '0');
@@ -75,6 +75,8 @@ document.addEventListener('click', (e) => {
 const form = document.getElementById("orderForm");
 function buildMessage(form) {
   const lines = [];
+  lines.push(document.getElementById('orderedBrownies').textContent.trim());
+  lines.push("Price: " + document.getElementById('totalPrice').textContent.trim() + " EUR");
   form.querySelectorAll("label").forEach(label => {
     const control = label.control || label.querySelector("input, textarea");
     if (!control) return;
@@ -119,7 +121,7 @@ function buildMessage(form) {
         return;
       }
     }
-    lines.push(`${label.textContent.trim()} ${value}`);
+    lines.push(label.textContent.replace(/^Your\b/, "My").trim() + " " + value.trim());
   });
   return lines.join("\n");
 }
@@ -141,7 +143,7 @@ form.addEventListener('submit', e => {
     // Open email
     const id = "maricakes"
     const mailtoLink = 
-    window.location.href = `mailto:${id}@gmail.com?subject=MariCakes order&body=${encodeURIComponent(msg)}`;
+    window.location.href = `mailto:${id}@gmail.com?subject=my MariCakes order&body=${encodeURIComponent(msg)}`;
   } else if (clickedButton === buttons[1]) {
     // Copy to clipboard
     navigator.clipboard.writeText(msg);
