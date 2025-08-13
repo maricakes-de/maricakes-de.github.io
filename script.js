@@ -23,29 +23,6 @@ function showSection(sectionId, btn) {
       <p>After transferring, please enter your b`+`a`+`nk acc`+`ount name in the form below, and attach a copy of the pa`+`yme`+`nt confirmation to your message.</p>`
   }
 }
-const brownies = [
-  { name: "Toasted Almond Bliss", desc: "Light and fluffy brownie topped with roasted almonds.", img: "brownie.png" },
-  { name: "Carrot Crunch", desc: "Carrot, almond, and cream.", img: "brownie.png" },
-  { name: "Cookies & Cream Fantasy", desc: "Vanilla sponge topped with cookies and chocolate drizzle.", img: "brownie.png" },
-  { name: "Chocolate Indulgence", desc: "Rich chocolate brownie with creamy layers.", img: "brownie.png" },
-];
-const orderedBrownies= document.getElementById('orderedBrownies');
-// Generate brownie cards
-brownies.forEach(brownie => {
-  const div = document.createElement('div');
-  div.className = 'brownie';
-  div.innerHTML = `
-    <img src="${brownie.img}" alt="${brownie.name}">
-    <div class="textBox">
-    <h3>${brownie.name}</h3>
-    <p>${brownie.desc}</p>
-    <label>Qty:
-      <input type="number" class="brownie-qty" data-name="${brownie.name}" min="0" max="10" value="0">
-    </label>
-    </div>
-  `;
-  document.getElementById('browniesContainer').appendChild(div);
-});
 function updateOrderSummary() {
   let total = 0;
   let count = 0;
@@ -60,9 +37,10 @@ function updateOrderSummary() {
       total += 2.5 * qty;
     }
   });
+  const orderedBrownies = document.getElementById('orderedBrownies');
   orderedBrownies.textContent = orderedList.join('\n');
-  document.getElementById('totalPrice').textContent= total.toFixed(2)+" EUR";
-  document.getElementById("basketCount").textContent = count;
+  document.getElementById('totalPrice').value = total.toFixed(2)+" EUR";
+  document.getElementById("basketCount").value = count;
 }
 // Attach listeners
 document.querySelectorAll('.brownie-qty').forEach(input => {

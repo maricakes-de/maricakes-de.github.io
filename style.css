@@ -17,10 +17,10 @@ body {
 header, h1, h2, h3 {
   font-family: "Style Script", cursive;
   margin: 0;
+  color: var(--logoText);
 }
 header {
   background-color: var(--logoBack);
-  color: var(--logoText);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -29,13 +29,8 @@ header {
   justify-content: center;
 }
 h1 {
-  color: var(--logoText);
-}
-h2 {
-  color: var(--logoText);
-}
-h3 {
-  color: var(--logoText);
+  font-size: 4em;
+  line-height: 1.1;
 }
 .logo {
   width: 8em;
@@ -56,7 +51,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: #d45d58; /* a nice pinkish hover */
+  color: var(--logoSpatula);
 }
 .icon{
   height: 1em;
@@ -75,15 +70,18 @@ nav button {
   background-color: var(--logoBack);
   border: none;
   border-radius: .5em .5em 0em 0em;
-}
-nav button:hover {
-  background: var(--logoPetal);
-  background-image: url("marble.avif");
+  font-family: "Style Script", cursive;
+  font-size: 1.25em;
+  color: var(--logoText);
 }
 nav button.active {
   background-color: var(--lightPetal);
   background-image: url("marble.avif");
   font-weight: bold;
+}
+nav button:hover {
+  background: var(--logoPetal);
+  background-image: url("marble.avif");
 }
 section {
   display: none;
@@ -92,28 +90,22 @@ section {
 .active-section {
   display: block;
 }
-.cake {
-  margin-bottom: 30px;
-}
-.cake img {
-  max-width: 100%;
-  max-height: 300px;
-  border-radius: .5em;
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-}
 .brownies-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 15em);
   gap: 1em;
 }
 .textBox {
-  min-height: 13em;
   border: 1px solid var(--logoText);
   text-align: center;
   border-radius: .5em;
 }
+.brownie {
+  text-align: center;
+}
 .brownie img {
-  width: 13em;
+  width: 100%;
+  border-radius: .5em;
 }
 fieldset {
   border: 1px solid var(--logoText);
@@ -125,6 +117,9 @@ textarea, input[type="text"] {
 textarea[readonly], input[readonly] {
   border: none;
   background: transparent;
+}
+#orderedBrownies {
+  height: 10em;
 }
 .honeypot {
   position: absolute;
