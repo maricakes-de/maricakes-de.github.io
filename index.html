@@ -31,69 +31,29 @@
   <div class="right-dummy"></div>
 </header>
 <nav>  
-  <button class="active" onclick="showSection('brownies', this)">Brownies<img src="flower.svg" alt="flower" class="icon"></button>
+  <button class="active" onclick="showSection('brownies', this)">Brownie box (<span id="boxCount">0</span>)</button>
+  <button onclick="showSection('assorted', this)">Assorted box (<span id="brownieCount">0</span>)</button>
   <button onclick="showSection('custom', this)">Custom cakes<img src="flower.svg" alt="flower" class="icon"></button>
   <button onclick="showSection('order-section', this)">Place order (<span id="basketCount">0</span>)</button>
 </nav>
 
 <section id="brownies" class="active-section">
+  <div class="brownies-grid" id="brownieBoxContainer">
+  </div>
+</section>
+
+<section id="assorted">
   <p>Select your brownies. They are sold in boxes of six. There is an additional price of 2.00 EUR for boxes with more than one flavour. There is a discount of 0.50 EUR if you bring your own box.</p>
   <div class="brownies-grid" id="browniesContainer">
-  <div class="brownie">
-    <img src="brownie.png" alt="Toasted Almond Bliss">
-    <div class="textBox">
-    <h2>Toasted Almond Bliss</h2>
-    Light and fluffy brownie topped with roasted almonds.<br>
-    <label>box of 6 (10 EUR)
-      <input type="number" class="brownie-qty" data-name="Toasted Almond Bliss" min="0" max="10" value="0">
-    </label><br>
-    <label>individual (2 EUR)
-      <input type="number" class="brownie-qty" data-name="Toasted Almond Bliss" min="0" max="10" value="0">
-    </label>
-    </div>
-  </div><div class="brownie">
-    <img src="brownie.png" alt="Carrot Crunch">
-    <div class="textBox">
-    <h2>Carrot Crunch</h2>
-    Carrot, almond, and cream.
-    <label>box of 6 (15 EUR)
-      <input type="number" class="brownie-qty" data-name="Carrot Crunch" min="0" max="10" value="0">
-    </label>
-    <label>individual (3 EUR)
-      <input type="number" class="brownie-qty" data-name="Carrot Crunch" min="0" max="10" value="0">
-    </label>
-    </div>
-  </div><div class="brownie">
-    <img src="brownie.png" alt="Cookies &amp; Cream Fantasy">
-    <div class="textBox">
-    <h2>Cookies &amp; Cream Fantasy</h2>
-    Vanilla sponge topped with cookies and chocolate drizzle.
-    <label>box of 6 (12.50 EUR)
-      <input type="number" class="brownie-qty" data-name="Cookies &amp; Cream Fantasy" min="0" max="10" value="0">
-    </label>
-    <label>individual (2.50 EUR)
-      <input type="number" class="brownie-qty" data-name="Cookies &amp; Cream Fantasy" min="0" max="10" value="0">
-    </label>
-    </div>
-  </div><div class="brownie">
-    <img src="brownie.png" alt="Chocolate Indulgence">
-    <div class="textBox">
-    <h2>Chocolate Indulgence</h2>
-    Rich chocolate brownie with creamy layers.
-    <label>Qty:
-      <input type="number" class="brownie-qty" data-name="Chocolate Indulgence" min="0" max="10" value="0">
-    </label>
-    </div>
-  </div>
   </div>
 
   <div class=brownieBox>
-    <img src="sprinkleTop.avif" alt="sprinkle covered brownie">
-    <img src="sprinkleTop.avif" alt="sprinkle covered brownie">
-    <img src="biscoffTop.avif" alt="brownie with biscoff">
-    <img src="biscoffTop.avif" alt="brownie with biscoff">
-    <img src="sprinkleTop.avif" alt="sprinkle covered brownie">
-    <img src="sprinkleTop.avif" alt="sprinkle covered brownie">
+    <img src="brownies/sprinkleTop.avif" alt="sprinkle covered brownie">
+    <img src="brownies/sprinkleTop.avif" alt="sprinkle covered brownie">
+    <img src="brownies/biscoffTop.avif" alt="brownie with biscoff">
+    <img src="brownies/biscoffTop.avif" alt="brownie with biscoff">
+    <img src="brownies/sprinkleTop.avif" alt="sprinkle covered brownie">
+    <img src="brownies/sprinkleTop.avif" alt="sprinkle covered brownie">
   </div>
 </section>
 
@@ -101,84 +61,84 @@
   <p>We make custom cakes to order. Contact us by email, Instagram, or Facebook to discuss your request.</p>
   <div class="brownies-grid">
     <div class="brownie">
-      <img src="almond.jpg" alt="Almond Cake">
+      <img src="cakes/almond.jpg" alt="Almond Cake">
       <div class="textBox">
       <h2>Toasted Almond Bliss</h2>
       Light and fluffy cake topped with roasted almonds and whipped cream.
       </div>
     </div>
     <div class="brownie">
-      <img src="Carrot.jpg" alt="Carrot Cake">
+      <img src="cakes/Carrot.jpg" alt="Carrot Cake">
       <div class="textBox">
       <h2>Carrot crunch</h2>
       Carrot almond, and cream.
       </div>
     </div>
     <div class="brownie">
-      <img src="Cookie.jpg" alt="Cookie Cake">
+      <img src="cakes/Cookie.jpg" alt="Cookie Cake">
       <div class="textBox">
       <h2>Cookies & Cream Fantasy</h2>
       Vanilla sponge cake topped with crunchy cookies and creamy chocolate drizzle.
       </div>
     </div>
     <div class="brownie">
-      <img src="Ferrero.jpg" alt="Ferrero Cake">
+      <img src="cakes/Ferrero.jpg" alt="Ferrero Cake">
       <div class="textBox">
       <h2>Ferrero Strawberry Delight</h2>
       A decadent cake topped with Ferrero Rocher chocolates and juicy strawberries.
       </div>
     </div>
     <div class="brownie">
-      <img src="Heart.jpg" alt="Chocolate Strawberry Cake">
+      <img src="cakes/Heart.jpg" alt="Chocolate Strawberry Cake">
       <div class="textBox">
       <h2>Strawberry Romance</h2>
       Rich chocolate base crowned with fresh strawberries and chocolate glaze.
       </div>
     </div>
     <div class="brownie">
-      <img src="Winter.jpg" alt="Winter Cake">
+      <img src="cakes/Winter.jpg" alt="Winter Cake">
       <div class="textBox">
       <h2>Winter Wonderland Cake</h2>
       Cool tones and snowy touches for a festive and elegant winter celebration.
       </div>
     </div>
     <div class="brownie">
-      <img src="Berries.jpg" alt="Mixed Berries Cake">
+      <img src="cakes/Berries.jpg" alt="Mixed Berries Cake">
       <div class="textBox">
       <h2>Berry Bouquet</h2>
       A fresh mix of berries over a soft sponge cake, customizable for any occasion.
       </div>
     </div>
     <div class="brownie">
-      <img src="Blue.jpg" alt="Blue Bear Cake">
+      <img src="cakes/Blue.jpg" alt="Blue Bear Cake">
       <div class="textBox">
       <h2>Blue Bear Cake</h2>
       Adorable bear-themed cake in calming blue tones, ideal for baby showers and birthdays.
       </div>
     </div>
     <div class="brownie">
-      <img src="Butterfly.jpg" alt="Butterfly Cake">
+      <img src="cakes/Butterfly.jpg" alt="Butterfly Cake">
       <div class="textBox">
       <h2>Butterfly Garden</h2>
       A delicate cake topped with edible butterflies and floral accents.
       </div>
     </div>
     <div class="brownie">
-      <img src="Chanel.jpg" alt="Chanel Cake">
+      <img src="cakes/Chanel.jpg" alt="Chanel Cake">
       <div class="textBox">
       <h2>Chanel-Inspired Elegance</h2>
       Luxurious black and white cake for fashionistas and glam celebrations.
       </div>
     </div>
     <div class="brownie">
-      <img src="Harry Potter.jpg" alt="Harry Potter Cake">
+      <img src="cakes/Harry Potter.jpg" alt="Harry Potter Cake">
       <div class="textBox">
       <h2>Harry Potter Magic Cake</h2>
       A magical cake for fans of the wizarding world, complete with Hogwarts elements.
       </div>
     </div>
     <div class="brownie">
-      <img src="Mother's Day.jpg" alt="Mother's Day Cake">
+      <img src="cakes/Mother's Day.jpg" alt="Mother's Day Cake">
       <div class="textBox">
       <h2>Sweetest Mom Cake</h2>
       Floral and heart-themed cake, perfect for celebrating Mother’s Day.
