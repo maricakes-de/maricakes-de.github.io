@@ -45,7 +45,7 @@ Object.entries(brownies).forEach(([id, brownie]) => {
   }
   const boxCard = document.createElement('div');
   boxCard.appendChild(boxOf6);
-  boxCard.className = 'brownie';
+  boxCard.className = 'product';
   boxCard.innerHTML += `
     <div class="textBox">
     <h2>${brownie.name} box</h2>
@@ -59,7 +59,7 @@ Object.entries(brownies).forEach(([id, brownie]) => {
   document.getElementById('brownieBoxGrid').appendChild(boxCard);
   
   const brownieCard = document.createElement('div');
-  brownieCard.className = 'brownie';
+  brownieCard.className = 'product';
   brownieCard.innerHTML += `
     <img src="brownies/${id}.avif" alt="${brownie.name} brownie side view">
     <div class="textBox">
@@ -76,8 +76,12 @@ Object.entries(brownies).forEach(([id, brownie]) => {
 function updateOrderSummary() {
   let total = 0;
   let boxCount = 0;
-  let brownieCount = 0;
+  let assortedCount = 0;
+  document.getElementById('assortedGrid').innerHTML = '';
   let orderedList = [];
+  let boxOf6 = document.createElement('div');
+  boxOf6.className = 'brownieBox';
+  document.getElementById('assortedGrid').appendChild(boxOf6);
   document.querySelectorAll('.brownie-qty').forEach(input => {
     let qty = Math.min(Math.max(parseInt(input.value) || 0, 0), 5); // 0–5 only
     input.value = qty;
@@ -88,18 +92,30 @@ function updateOrderSummary() {
         orderedList.push(`${qty} x ${5*brownies[brownieId].price} EUR ${brownies[brownieId].name} box`);
         total += 5*brownies[brownieId].price * qty;
       } else {
-        brownieCount += qty
+        for (let step = 0; step < qty; step++) {
+          boxOf6.innerHTML += `<img src="brownies/${brownieId}Top.avif" alt="${brownies[brownieId].name} brownie top view">`;
+          assortedCount++;
+          if (assortedCount%6 === 0) {
+            boxOf6 = document.createElement('div');
+            boxOf6.className = 'brownieBox';
+            document.getElementById('assortedGrid').appendChild(boxOf6);
+          }
+        }
         orderedList.push(`${qty} x ${brownies[brownieId].price} EUR ${brownies[brownieId].name}`);
         total += brownies[brownieId].price * qty;
-        //document.getElementById('assortedGrid').appendChild(brownieCard);
       }
     }
   });
+  let fillMessage = document.createElement('span');
+  fillMessage.innerHTML += 'Fill your box!';
+  fillMessage.style.width = '33%'; 
+  fillMessage.style.display = "inline-block";
+  boxOf6.appendChild(fillMessage);
   const orderedBrownies = document.getElementById('orderedBrownies');
   orderedBrownies.textContent = orderedList.join('\n');
   document.getElementById('totalPrice').textContent = total.toFixed(2);
   document.getElementById("boxCount").textContent = boxCount;
-  document.getElementById("brownieCount").textContent = Math.floor(brownieCount/6);
+  document.getElementById("assortedCount").textContent = Math.floor(assortedCount/6);
 }
 // Attach listeners
 document.querySelectorAll('.brownie-qty').forEach(input => {
