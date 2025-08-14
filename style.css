@@ -107,6 +107,16 @@ section {
   width: 100%;
   border-radius: .5em;
 }
+.brownieBox {
+  width: 50%;
+  aspect-ratio: 1.5;
+  border: 1px solid var(--logoText);
+  border-radius: .5em;
+}
+.brownieBox img {
+  width: 38%;
+  margin: -3%;
+}
 fieldset {
   border: 1px solid var(--logoText);
   border-radius: .5em;

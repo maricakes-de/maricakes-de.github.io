@@ -131,7 +131,7 @@ paidCheckbox.addEventListener('change', () => {
 });
 //Reset pick up time warnings when a new pick up time is chosen
 form.querySelector('input[type="datetime-local"]').addEventListener('input', (timeInput) => {
-  timeInput.setCustomValidity('');
+  timeInput.target.setCustomValidity('');
 });
 form.addEventListener('submit', e => {
   e.preventDefault(); // prevent page refresh

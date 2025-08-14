@@ -37,14 +37,17 @@
 </nav>
 
 <section id="brownies" class="active-section">
-  <p>Select your brownies.</p>
+  <p>Select your brownies. They are sold in boxes of six. There is an additional price of 2.00 EUR for boxes with more than one flavour. There is a discount of 0.50 EUR if you bring your own box.</p>
   <div class="brownies-grid" id="browniesContainer">
   <div class="brownie">
     <img src="brownie.png" alt="Toasted Almond Bliss">
     <div class="textBox">
     <h2>Toasted Almond Bliss</h2>
-    Light and fluffy brownie topped with roasted almonds.
-    <label>Qty:
+    Light and fluffy brownie topped with roasted almonds.<br>
+    <label>box of 6 (10 EUR)
+      <input type="number" class="brownie-qty" data-name="Toasted Almond Bliss" min="0" max="10" value="0">
+    </label><br>
+    <label>individual (2 EUR)
       <input type="number" class="brownie-qty" data-name="Toasted Almond Bliss" min="0" max="10" value="0">
     </label>
     </div>
@@ -53,7 +56,10 @@
     <div class="textBox">
     <h2>Carrot Crunch</h2>
     Carrot, almond, and cream.
-    <label>Qty:
+    <label>box of 6 (15 EUR)
+      <input type="number" class="brownie-qty" data-name="Carrot Crunch" min="0" max="10" value="0">
+    </label>
+    <label>individual (3 EUR)
       <input type="number" class="brownie-qty" data-name="Carrot Crunch" min="0" max="10" value="0">
     </label>
     </div>
@@ -62,7 +68,10 @@
     <div class="textBox">
     <h2>Cookies &amp; Cream Fantasy</h2>
     Vanilla sponge topped with cookies and chocolate drizzle.
-    <label>Qty:
+    <label>box of 6 (12.50 EUR)
+      <input type="number" class="brownie-qty" data-name="Cookies &amp; Cream Fantasy" min="0" max="10" value="0">
+    </label>
+    <label>individual (2.50 EUR)
       <input type="number" class="brownie-qty" data-name="Cookies &amp; Cream Fantasy" min="0" max="10" value="0">
     </label>
     </div>
@@ -76,6 +85,15 @@
     </label>
     </div>
   </div>
+  </div>
+
+  <div class=brownieBox>
+    <img src="sprinkleTop.avif" alt="sprinkle covered brownie">
+    <img src="sprinkleTop.avif" alt="sprinkle covered brownie">
+    <img src="biscoffTop.avif" alt="brownie with biscoff">
+    <img src="biscoffTop.avif" alt="brownie with biscoff">
+    <img src="sprinkleTop.avif" alt="sprinkle covered brownie">
+    <img src="sprinkleTop.avif" alt="sprinkle covered brownie">
   </div>
 </section>
 
