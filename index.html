@@ -34,26 +34,27 @@
   <button class="active" onclick="showSection('brownies', this)">Brownie box (<span id="boxCount">0</span>)</button>
   <button onclick="showSection('assorted', this)">Assorted box (<span id="brownieCount">0</span>)</button>
   <button onclick="showSection('custom', this)">Custom cakes<img src="flower.svg" alt="flower" class="icon"></button>
-  <button onclick="showSection('order-section', this)">Place order (<span id="basketCount">0</span>)</button>
+  <button onclick="showSection('order-section', this)">Place order<img src="flower.svg" alt="flower" class="icon"></button>
 </nav>
 
 <section id="brownies" class="active-section">
-  <div class="brownies-grid" id="brownieBoxContainer">
+  <div class="brownies-grid" id="brownieBoxGrid">
   </div>
 </section>
 
 <section id="assorted">
   <p>Select your brownies. They are sold in boxes of six. There is an additional price of 2.00 EUR for boxes with more than one flavour. There is a discount of 0.50 EUR if you bring your own box.</p>
-  <div class="brownies-grid" id="browniesContainer">
+  <div class="brownies-grid" id="assortedGrid">
+    <div class=brownieBox>
+      <img src="brownies/sprinkleTop.avif" alt="sprinkle covered brownie">
+      <img src="brownies/sprinkleTop.avif" alt="sprinkle covered brownie">
+      <img src="brownies/biscoffTop.avif" alt="brownie with biscoff">
+      <img src="brownies/biscoffTop.avif" alt="brownie with biscoff">
+      <img src="brownies/sprinkleTop.avif" alt="sprinkle covered brownie">
+      <img src="brownies/sprinkleTop.avif" alt="sprinkle covered brownie">
+    </div>
   </div>
-
-  <div class=brownieBox>
-    <img src="brownies/sprinkleTop.avif" alt="sprinkle covered brownie">
-    <img src="brownies/sprinkleTop.avif" alt="sprinkle covered brownie">
-    <img src="brownies/biscoffTop.avif" alt="brownie with biscoff">
-    <img src="brownies/biscoffTop.avif" alt="brownie with biscoff">
-    <img src="brownies/sprinkleTop.avif" alt="sprinkle covered brownie">
-    <img src="brownies/sprinkleTop.avif" alt="sprinkle covered brownie">
+  <div class="brownies-grid" id="browniesGrid">
   </div>
 </section>
 

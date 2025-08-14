@@ -23,80 +23,83 @@ function showSection(sectionId, btn) {
       <p>After transferring, please enter your b`+`a`+`nk acc`+`ount name in the form below, and attach a copy of the pa`+`yme`+`nt confirmation to your message.</p>`
   }
 }
-const brownies = [
-  { id: "almond", price:2.5, name: "Toasted almond bliss", desc: "Light and fluffy brownie topped with roasted almonds." },
-  { id: "banana", price:2.5, name: "Carrot crunch", desc: "Carrot, almond, and cream."},
-  { id: "biscoff",price:2.5, name: "Cookies & cream fantasy", desc: "Vanilla sponge topped with cookies and chocolate drizzle." },
-  { id: "caramel",price:2.5, name: "Chocolate indulgence", desc: "Rich chocolate brownie with creamy layers." },
-  { id: "choc",   price:2.5, name: "Chocolate indulgence", desc: "Rich chocolate brownie with creamy layers." },
-  { id:"chocMarsh",price:2.5,name: "Chocolate indulgence", desc: "Rich chocolate brownie with creamy layers." },
-  { id: "kinder", price:2.5, name: "Chocolate indulgence", desc: "Rich chocolate brownie with creamy layers." },
-  { id: "marsh",  price:2.5, name: "Chocolate indulgence", desc: "Rich chocolate brownie with creamy layers." },
-  { id: "mocha",  price:2.5, name: "Chocolate indulgence", desc: "Rich chocolate brownie with creamy layers." },
-  { id: "oreo",   price:2.5, name: "Chocolate indulgence", desc: "Rich chocolate brownie with creamy layers." },
-  { id: "sprinkle",price:2.5,name: "Chocolate indulgence", desc: "Rich chocolate brownie with creamy layers." },
-  { id: "strawb", price:2.5, name: "Chocolate indulgence", desc: "Rich chocolate brownie with creamy layers." },
-];
-brownies.forEach(brownie => {
+const brownies = {
+  almond:  {price:2.5, name: "Toasted almond bliss", desc: "Light and fluffy brownie topped with roasted almonds." },
+  banana:  {price:2.5, name: "Carrot crunch", desc: "Carrot, almond, and cream."},
+  biscoff: {price:2.5, name: "Cookies & cream fantasy", desc: "Vanilla sponge topped with cookies and chocolate drizzle." },
+  caramel: {price:2.5, name: "Chocolate indulgence", desc: "Rich chocolate brownie with creamy layers." },
+  choc:    {price:2.5, name: "Chocolate indulgence", desc: "Rich chocolate brownie with creamy layers." },
+  chocMar: {price:2.5, name: "Chocolate indulgence", desc: "Rich chocolate brownie with creamy layers." },
+  kinder:  {price:2.5, name: "Chocolate indulgence", desc: "Rich chocolate brownie with creamy layers." },
+  marsh:   {price:2.5, name: "Chocolate indulgence", desc: "Rich chocolate brownie with creamy layers." },
+  mocha:   {price:2.5, name: "Chocolate indulgence", desc: "Rich chocolate brownie with creamy layers." },
+  oreo:    {price:2.5, name: "Chocolate indulgence", desc: "Rich chocolate brownie with creamy layers." },
+  sprinkle:{price:2.5, name: "Chocolate indulgence", desc: "Rich chocolate brownie with creamy layers." },
+  strawb:  {price:2.5, name: "Chocolate indulgence", desc: "Rich chocolate brownie with creamy layers." },
+};
+Object.entries(brownies).forEach(([id, brownie]) => {
   const boxOf6 = document.createElement('div');
   boxOf6.className = 'brownieBox';
   for (let step = 0; step < 6; step++) {
-    boxOf6.innerHTML += `<img src="brownies/${brownie.id}Top.avif" alt="${brownie.name} brownie top view">`;
+    boxOf6.innerHTML += `<img src="brownies/${id}Top.avif" alt="${brownie.name} brownie top view">`;
   }
   const boxCard = document.createElement('div');
   boxCard.appendChild(boxOf6);
   boxCard.className = 'brownie';
   boxCard.innerHTML += `
     <div class="textBox">
-    <h2>${brownie.name}</h2>
+    <h2>${brownie.name} box</h2>
     ${brownie.desc}<br>
     price ${(5*brownie.price).toFixed(2)} EUR<br>
     <label>Qty:
-      <input type="number" class="brownie-qty" data-name="${brownie.name} box" data-price="${5*brownie.price}" min="0" max="5" value="0">
+      <input type="number" class="brownie-qty" name="B${id}" min="0" max="5" value="0">
     </label>
     </div>
   `;
-  document.getElementById('brownieBoxContainer').appendChild(boxCard);
+  document.getElementById('brownieBoxGrid').appendChild(boxCard);
   
   const brownieCard = document.createElement('div');
   brownieCard.className = 'brownie';
   brownieCard.innerHTML += `
-    <img src="brownies/${brownie.id}.avif" alt="${brownie.name} brownie side view">
+    <img src="brownies/${id}.avif" alt="${brownie.name} brownie side view">
     <div class="textBox">
     <h2>${brownie.name}</h2>
     ${brownie.desc}<br>
     price ${(brownie.price).toFixed(2)} EUR<br>
     <label>Qty:
-      <input type="number" class="brownie-qty" data-name="${brownie.name}" data-price="${brownie.price}" min="0" max="5" value="0">
+      <input type="number" class="brownie-qty" name="A${id}" min="0" max="5" value="0">
     </label>
     </div>
   `;
-  document.getElementById('browniesContainer').appendChild(brownieCard);
+  document.getElementById('browniesGrid').appendChild(brownieCard);
 });
 function updateOrderSummary() {
   let total = 0;
-  let count = 0;
   let boxCount = 0;
   let brownieCount = 0;
   let orderedList = [];
   document.querySelectorAll('.brownie-qty').forEach(input => {
     let qty = Math.min(Math.max(parseInt(input.value) || 0, 0), 5); // 0–5 only
     input.value = qty;
-    const name = input.dataset.name;
     if (qty > 0) {
-      count += qty;
-      if (name.includes("box")) boxCount +=qty;
-      else brownieCount += qty
-      orderedList.push(`${qty} x ${input.dataset.price} EUR ${name}`);
-      total += input.dataset.price * qty;
+      const brownieId = input.name.substring(1)
+      if (input.name.startsWith("B")) {
+        boxCount +=qty;
+        orderedList.push(`${qty} x ${5*brownies[brownieId].price} EUR ${brownies[brownieId].name} box`);
+        total += 5*brownies[brownieId].price * qty;
+      } else {
+        brownieCount += qty
+        orderedList.push(`${qty} x ${brownies[brownieId].price} EUR ${brownies[brownieId].name}`);
+        total += brownies[brownieId].price * qty;
+        //document.getElementById('assortedGrid').appendChild(brownieCard);
+      }
     }
   });
   const orderedBrownies = document.getElementById('orderedBrownies');
   orderedBrownies.textContent = orderedList.join('\n');
   document.getElementById('totalPrice').textContent = total.toFixed(2);
   document.getElementById("boxCount").textContent = boxCount;
-  document.getElementById("brownieCount").textContent = brownieCount;
-  document.getElementById("basketCount").textContent = count;
+  document.getElementById("brownieCount").textContent = Math.floor(brownieCount/6);
 }
 // Attach listeners
 document.querySelectorAll('.brownie-qty').forEach(input => {
