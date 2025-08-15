@@ -76,6 +76,17 @@ Object.entries(brownies).forEach(([id, brownie]) => {
     </label>
     </div>
   `;
+  
+  const img = brownieCard.querySelector('img');
+  const input = brownieCard.querySelector('.brownie-qty');
+
+  img.addEventListener('click', () => {
+    input.value = Math.min(parseInt(input.max, 10), parseInt(input.value, 10) + 1);
+    input.dispatchEvent(new Event('input')); // triggers any input listeners
+  });
+
+
+
   document.getElementById('browniesGrid').appendChild(brownieCard);
 });
 function updateOrderSummary() {
