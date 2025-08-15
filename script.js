@@ -45,48 +45,80 @@ const brownies = {
 Object.entries(brownies).forEach(([id, brownie]) => {
   const boxOf6 = document.createElement('div');
   boxOf6.className = 'brownieBox';
+  boxOf6.classList.add('mouseOverBright'); 
   for (let step = 0; step < 6; step++) {
-    boxOf6.innerHTML += `<img src="brownies/${id}Top.avif" alt="${brownie.name} brownie top view">`;
+    const img = document.createElement('img');
+    img.src = `brownies/${id}Top.avif`;
+    img.alt = `${brownie.name} brownie top view`;
+    boxOf6.appendChild(img);
   }
   const boxCard = document.createElement('div');
   boxCard.appendChild(boxOf6);
   boxCard.className = 'product';
-  boxCard.innerHTML += `
-    <div class="textBox">
-    <h2>${brownie.name} box</h2>
-    ${brownie.desc}<br>
-    price ${(5*brownie.price).toFixed(2)} EUR<br>
-    <label>Qty:
-      <input type="number" class="brownie-qty" name="B${id}" min="0" max="5" value="0">
-    </label>
-    </div>
-  `;
+  const txtBox6 = document.createElement('div');
+  txtBox6.className = 'textBox';
+  const title = document.createElement('h2');
+  title.textContent = `${brownie.name} box`;
+  txtBox6.appendChild(title);
+  const desc6 = document.createElement('p');
+  desc6.innerHTML = `${brownie.desc}<br>price ${(5 * brownie.price).toFixed(2)} EUR<br>`;
+  txtBox6.appendChild(desc6);
+  const label6 = document.createElement('label');
+  label6.textContent = 'Qty: ';
+  const input6 = document.createElement('input');
+  input6.type = 'number';
+  input6.className = 'brownie-qty';
+  input6.name = `B${id}`;
+  input6.min = 0;
+  input6.max = 5;
+  input6.value = 0;
+  label6.appendChild(input6);
+  txtBox6.appendChild(label6);
+  boxCard.appendChild(txtBox6);
+  const increaseQty6 = () => {
+    if ( parseInt(input6.value, 10) < parseInt(input6.max, 10) ) {
+      input6.value = parseInt(input6.value, 10) + 1;
+      input6.dispatchEvent(new Event('input')); // trigger input listeners if any
+    }
+  };
+  boxOf6.addEventListener('click', increaseQty6);
+  boxOf6.classList.add('mouseOverBright');
   document.getElementById('brownieBoxGrid').appendChild(boxCard);
-  
+
   const brownieCard = document.createElement('div');
   brownieCard.className = 'product';
-  brownieCard.innerHTML += `
-    <img src="brownies/${id}.avif" alt="${brownie.name} brownie side view">
-    <div class="textBox">
-    <h2>${brownie.name}</h2>
-    ${brownie.desc}<br>
-    price ${(brownie.price).toFixed(2)} EUR<br>
-    <label>Qty:
-      <input type="number" class="brownie-qty" name="A${id}" min="0" max="5" value="0">
-    </label>
-    </div>
-  `;
-  
-  const img = brownieCard.querySelector('img');
-  const input = brownieCard.querySelector('.brownie-qty');
-
-  img.addEventListener('click', () => {
-    input.value = Math.min(parseInt(input.max, 10), parseInt(input.value, 10) + 1);
-    input.dispatchEvent(new Event('input')); // triggers any input listeners
-  });
-
-
-
+  const img = document.createElement('img');
+  img.src = `brownies/${id}.avif`;
+  img.alt = `${brownie.name} brownie side view`;
+  brownieCard.appendChild(img);
+  const textBox = document.createElement('div');
+  textBox.className = 'textBox';
+  const h2 = document.createElement('h2');
+  h2.textContent = brownie.name;
+  textBox.appendChild(h2);
+  const desc = document.createElement('div');
+  desc.innerHTML = `${brownie.desc}<br>price ${(brownie.price).toFixed(2)} EUR<br>`;
+  textBox.appendChild(desc);
+  const label = document.createElement('label');
+  label.textContent = 'Qty: ';
+  const input = document.createElement('input');
+  input.type = 'number';
+  input.className = 'brownie-qty';
+  input.name = `A${id}`;
+  input.min = 0;
+  input.max = 5;
+  input.value = 0;
+  label.appendChild(input);
+  textBox.appendChild(label);
+  brownieCard.appendChild(textBox);
+  const increaseQty = () => {
+    if ( parseInt(input.value, 10) < parseInt(input.max, 10) ) {
+      input.value = parseInt(input.value, 10) + 1;
+      input.dispatchEvent(new Event('input')); // trigger input listeners if any
+    }
+  };
+  img.addEventListener('click', increaseQty);
+  img.classList.add('mouseOverBright');
   document.getElementById('browniesGrid').appendChild(brownieCard);
 });
 function updateOrderSummary() {
@@ -106,13 +138,25 @@ function updateOrderSummary() {
         orderedList.push(`${qty} x ${5*brownies[brownieId].price} EUR ${brownies[brownieId].name} box`);
         total += 5*brownies[brownieId].price * qty;
       } else {
+        const decreaseQty = () => {
+          if ( 0 < parseInt(input.value, 10) ) {
+            input.value = parseInt(input.value, 10) - 1;
+            input.dispatchEvent(new Event('input')); // trigger input listeners if any
+          }
+        };
         for (let step = 0; step < qty; step++) {
           if (assortedCount%6 === 0) {
             boxOf6 = document.createElement('div');
             boxOf6.className = 'brownieBox';
             document.getElementById('assortedGrid').appendChild(boxOf6);
           }
-          boxOf6.innerHTML += `<img src="brownies/${brownieId}Top.avif" alt="${brownies[brownieId].name} brownie top view">`;
+          //boxOf6.innerHTML += `<img src="brownies/${brownieId}Top.avif" alt="${brownies[brownieId].name} brownie top view">`;
+          const img = document.createElement('img');
+          img.src = `brownies/${brownieId}Top.avif`;
+          img.alt = `${brownies[brownieId].name} brownie top view`;
+          img.addEventListener('click', decreaseQty);
+          img.classList.add('mouseOverBright');
+          boxOf6.appendChild(img);
           assortedCount++;
         }
         orderedList.push(`${qty} x ${brownies[brownieId].price} EUR ${brownies[brownieId].name}`);

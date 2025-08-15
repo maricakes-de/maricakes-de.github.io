@@ -110,8 +110,14 @@ section {
   animation: flashBorder 1s infinite;
 }
 @keyframes flashBorder {
-  0%, 50%, 100% { background-color: transparent; }
-  25%, 75% { background-color: var(--logoBack); }
+  0%, 50%, 100% { 
+    background-color: transparent; 
+    border-color: transparent; 
+  }
+  25%, 75% { 
+    background-color: var(--logoBack); 
+    border-color: currentColor; 
+  }
 }
 .product {
   text-align: center;
@@ -119,6 +125,9 @@ section {
 .product img {
   width: 100%;
   border-radius: .5em;
+}
+.mouseOverBright:hover {
+  filter: brightness(1.3);
 }
 .brownieBox {
   aspect-ratio: 1.5;
