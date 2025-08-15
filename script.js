@@ -45,7 +45,7 @@ const brownies = {
 Object.entries(brownies).forEach(([id, brownie]) => {
   const boxOf6 = document.createElement('div');
   boxOf6.className = 'brownieBox';
-  boxOf6.classList.add('mouseOverBright'); 
+  boxOf6.classList.add('mouseOverBright');
   for (let step = 0; step < 6; step++) {
     const img = document.createElement('img');
     img.src = `brownies/${id}Top.avif`;
@@ -53,8 +53,8 @@ Object.entries(brownies).forEach(([id, brownie]) => {
     boxOf6.appendChild(img);
   }
   const boxCard = document.createElement('div');
-  boxCard.appendChild(boxOf6);
   boxCard.className = 'product';
+  boxCard.appendChild(boxOf6);
   const txtBox6 = document.createElement('div');
   txtBox6.className = 'textBox';
   const title = document.createElement('h2');
@@ -65,6 +65,15 @@ Object.entries(brownies).forEach(([id, brownie]) => {
   txtBox6.appendChild(desc6);
   const label6 = document.createElement('label');
   label6.textContent = 'Qty: ';
+  const minusBtn = document.createElement('button');
+  minusBtn.type = 'button';
+  minusBtn.textContent = '−';
+  minusBtn.addEventListener('click', () => {
+    if (parseInt(input6.value, 10) > parseInt(input6.min, 10)) {
+      input6.value = parseInt(input6.value, 10) - 1;
+      input6.dispatchEvent(new Event('input'));
+    }
+  });
   const input6 = document.createElement('input');
   input6.type = 'number';
   input6.className = 'brownie-qty';
@@ -72,17 +81,27 @@ Object.entries(brownies).forEach(([id, brownie]) => {
   input6.min = 0;
   input6.max = 5;
   input6.value = 0;
+  const plusBtn = document.createElement('button');
+  plusBtn.type = 'button';
+  plusBtn.textContent = '+';
+  plusBtn.addEventListener('click', () => {
+    if (parseInt(input6.value, 10) < parseInt(input6.max, 10)) {
+      input6.value = parseInt(input6.value, 10) + 1;
+      input6.dispatchEvent(new Event('input'));
+    }
+  });
+  label6.appendChild(minusBtn);
   label6.appendChild(input6);
+  label6.appendChild(plusBtn);
   txtBox6.appendChild(label6);
   boxCard.appendChild(txtBox6);
   const increaseQty6 = () => {
-    if ( parseInt(input6.value, 10) < parseInt(input6.max, 10) ) {
+    if (parseInt(input6.value, 10) < parseInt(input6.max, 10)) {
       input6.value = parseInt(input6.value, 10) + 1;
-      input6.dispatchEvent(new Event('input')); // trigger input listeners if any
+      input6.dispatchEvent(new Event('input'));
     }
   };
   boxOf6.addEventListener('click', increaseQty6);
-  boxOf6.classList.add('mouseOverBright');
   document.getElementById('brownieBoxGrid').appendChild(boxCard);
 
   const brownieCard = document.createElement('div');
