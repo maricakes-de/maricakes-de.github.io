@@ -1,26 +1,31 @@
 function showSection(sectionId, btn) {
-  document.querySelectorAll('section').forEach(sec => sec.style.display = 'none');
-  document.getElementById(sectionId).style.display = 'block';
-  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  const bnkInfo = document.getElementById('bnkInfo');
-  if (document.querySelector('label.honeypot input').value) {
-    bnkInfo.innerHTML = `<p>Get in touch with us by email, Facebook, or Instagram, and we’ll send you our b`+`a`+`nk details.</p>`
+  const fillMessage = document.getElementById("fillMessage");
+  if (fillMessage) {
+    fillMessage.classList.add("flash");
   } else {
-    bnkInfo.innerHTML = `
-      <p>Please transfer your payment to the following account:</p>
-        <li>
-          <strong>Ac`+`c`+`ount type:</strong> Bu`+`siness
-        </li>
-        <li>
-          <strong>Account name:</strong> M`+`ari`+`ko S`+`uzu`+`ki
-          <button class="copy-btn" data-copy="M`+`ar`+`ik`+`o S`+`uz`+`uki" aria-label="Copy Account Name">Copy</button>
-        </li>
-        <li>
-          <strong>I`+`BA`+`N:</strong> D`+`E0`+`2 10`+`01 100`+`1 25`+`06 44`+`91 2`+`6
-          <button class="copy-btn" data-copy="D`+`E0`+`2 1`+`00`+`1 1`+`0`+`01 2`+`50`+`6 4`+`4`+`91 2`+`6" aria-label="Copy I`+`B`+`AN">Copy</button>
-        </li>
-      <p>After transferring, please enter your b`+`a`+`nk acc`+`ount name in the form below, and attach a copy of the pa`+`yme`+`nt confirmation to your message.</p>`
+    document.querySelectorAll('section').forEach(sec => sec.style.display = 'none');
+    document.getElementById(sectionId).style.display = 'block';
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    const bnkInfo = document.getElementById('bnkInfo');
+    if (document.querySelector('label.honeypot input').value) {
+      bnkInfo.innerHTML = `<p>Get in touch with us by email, Facebook, or Instagram, and we’ll send you our b`+`a`+`nk details.</p>`
+    } else {
+      bnkInfo.innerHTML = `
+        <p>Please transfer your payment to the following account:</p>
+          <li>
+            <strong>Ac`+`c`+`ount type:</strong> Bu`+`siness
+          </li>
+          <li>
+            <strong>Account name:</strong> M`+`ari`+`ko S`+`uzu`+`ki
+            <button class="copy-btn" data-copy="M`+`ar`+`ik`+`o S`+`uz`+`uki" aria-label="Copy Account Name">Copy</button>
+          </li>
+          <li>
+            <strong>I`+`BA`+`N:</strong> D`+`E0`+`2 10`+`01 100`+`1 25`+`06 44`+`91 2`+`6
+            <button class="copy-btn" data-copy="D`+`E0`+`2 1`+`00`+`1 1`+`0`+`01 2`+`50`+`6 4`+`4`+`91 2`+`6" aria-label="Copy I`+`B`+`AN">Copy</button>
+          </li>
+        <p>After transferring, please enter your b`+`a`+`nk acc`+`ount name in the form below, and attach a copy of the pa`+`yme`+`nt confirmation to your message.</p>`
+    }
   }
 }
 const brownies = {
@@ -79,9 +84,7 @@ function updateOrderSummary() {
   let assortedCount = 0;
   document.getElementById('assortedGrid').innerHTML = '';
   let orderedList = [];
-  let boxOf6 = document.createElement('div');
-  boxOf6.className = 'brownieBox';
-  document.getElementById('assortedGrid').appendChild(boxOf6);
+  let boxOf6;
   document.querySelectorAll('.brownie-qty').forEach(input => {
     let qty = Math.min(Math.max(parseInt(input.value) || 0, 0), 5); // 0–5 only
     input.value = qty;
@@ -93,39 +96,41 @@ function updateOrderSummary() {
         total += 5*brownies[brownieId].price * qty;
       } else {
         for (let step = 0; step < qty; step++) {
-          boxOf6.innerHTML += `<img src="brownies/${brownieId}Top.avif" alt="${brownies[brownieId].name} brownie top view">`;
-          assortedCount++;
           if (assortedCount%6 === 0) {
             boxOf6 = document.createElement('div');
             boxOf6.className = 'brownieBox';
             document.getElementById('assortedGrid').appendChild(boxOf6);
           }
+          boxOf6.innerHTML += `<img src="brownies/${brownieId}Top.avif" alt="${brownies[brownieId].name} brownie top view">`;
+          assortedCount++;
         }
         orderedList.push(`${qty} x ${brownies[brownieId].price} EUR ${brownies[brownieId].name}`);
         total += brownies[brownieId].price * qty;
       }
     }
   });
-  let fillMessage = document.createElement('span');
-  fillMessage.innerHTML += 'Fill your box!';
-  fillMessage.style.width = '33%'; 
-  fillMessage.style.display = "inline-block";
-  boxOf6.appendChild(fillMessage);
+  if (!assortedCount) {
+    boxOf6 = document.createElement('div');
+    boxOf6.className = 'brownieBox';
+    boxOf6.innerHTML = 'Your box is empty';
+    document.getElementById('assortedGrid').appendChild(boxOf6);
+  } else if (assortedCount%6) {
+    let fillMessage = document.createElement('div');
+    fillMessage.className = 'textBox'; 
+    fillMessage.id = 'fillMessage'; 
+    fillMessage.innerHTML = 'Fill your box!';
+    boxOf6.appendChild(fillMessage);
+  }
   const orderedBrownies = document.getElementById('orderedBrownies');
   orderedBrownies.textContent = orderedList.join('\n');
   document.getElementById('totalPrice').textContent = total.toFixed(2);
   document.getElementById("boxCount").textContent = boxCount;
-  assortedInput = document.getElementById("assortedCount");
-  assortedInput.value = assortedCount/6;
-  if (Number.isInteger(Number(assortedInput.value))) assortedInput.setCustomValidity("");
-  else assortedInput.setCustomValidity("You have an unfilled box.");
-  console.log("input",assortedInput);
-  console.log("value",assortedInput.value);
-  console.log("number",Number(assortedInput.value));
-  console.log("integer",Number.isInteger(Number(assortedInput.value)));
-  console.log("asso",assortedInput.reportValidity());
+  document.getElementById("assortedCount").textContent = (assortedCount/6).toFixed(1);
+  //if (Number.isInteger(Number(assortedInput.value))) assortedInput.setCustomValidity("");
+  //else assortedInput.setCustomValidity("You have an unfilled box.");
 }
 // Attach listeners
+updateOrderSummary();
 document.querySelectorAll('.brownie-qty').forEach(input => {
   input.addEventListener('input', updateOrderSummary);
 });

@@ -32,9 +32,7 @@
 </header>
 <nav>  
   <button class="active" onclick="showSection('brownies', this)">Brownie box (<span id="boxCount">0</span>)</button>
-  <button onclick="showSection('assorted', this)">
-    Assorted box (<input form="orderForm" type="number" id="assortedCount" value="0">)
-  </button>
+  <button onclick="showSection('assorted', this)">Assorted box (<span id="assortedCount">0</span>)</button>
   <button onclick="showSection('custom', this)">Custom cakes<img src="flower.svg" alt="flower" class="icon"></button>
   <button onclick="showSection('order-section', this)">Place order<img src="flower.svg" alt="flower" class="icon"></button>
 </nav>
@@ -46,7 +44,6 @@
 <section id="assorted">
   <p>Select your brownies. They are sold in boxes of six. There is an additional price of 2.00 EUR for boxes with more than one flavour. There is a discount of 0.50 EUR if you bring your own box.</p>
   <div class="brownies-grid" id="assortedGrid">
-    <div class="product textBox ratio32">Fill your box.</div>
   </div>
   <div class="brownies-grid" id="browniesGrid"></div>
 </section>

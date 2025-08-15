@@ -100,8 +100,18 @@ section {
   text-align: center;
   border-radius: .5em;
 }
-.ratio32 {
-  aspect-ratio: 1.5
+#fillMessage {
+  display: inline-block;
+  width: 33%; 
+  aspect-ratio: 1;
+  vertical-align: bottom;
+}
+.flash {
+  animation: flashBorder 1s infinite;
+}
+@keyframes flashBorder {
+  0%, 50%, 100% { border-color: currentColor; }
+  25%, 75% { border-color: transparent; }
 }
 .product {
   text-align: center;
