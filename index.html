@@ -32,7 +32,9 @@
 </header>
 <nav>  
   <button class="active" onclick="showSection('brownies', this)">Brownie box (<span id="boxCount">0</span>)</button>
-  <button onclick="showSection('assorted', this)">Assorted box (<span id="assortedCount">0</span>)</button>
+  <button onclick="showSection('assorted', this)">
+    Assorted box (<input form="orderForm" type="number" id="assortedCount" value="0">)
+  </button>
   <button onclick="showSection('custom', this)">Custom cakes<img src="flower.svg" alt="flower" class="icon"></button>
   <button onclick="showSection('order-section', this)">Place order<img src="flower.svg" alt="flower" class="icon"></button>
 </nav>
@@ -158,7 +160,7 @@
     <label>Preferred pick-up time*:<br>
     <input type="datetime-local"></label><br><br>
     <label>Your name*:<br> 
-    <input type="text" required></label><br><br>
+    <input name='yourName', type="text" required></label><br><br>
     <label class="honeypot">Leave this field empty<input type="text" tabindex="-1" autocomplete="off"></label>
     <button type="submit">Open email</button> or
     <button class="copy-btn" type="submit">Copy</button>

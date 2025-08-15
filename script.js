@@ -115,7 +115,15 @@ function updateOrderSummary() {
   orderedBrownies.textContent = orderedList.join('\n');
   document.getElementById('totalPrice').textContent = total.toFixed(2);
   document.getElementById("boxCount").textContent = boxCount;
-  document.getElementById("assortedCount").textContent = Math.floor(assortedCount/6);
+  assortedInput = document.getElementById("assortedCount");
+  assortedInput.value = assortedCount/6;
+  if (Number.isInteger(Number(assortedInput.value))) assortedInput.setCustomValidity("");
+  else assortedInput.setCustomValidity("You have an unfilled box.");
+  console.log("input",assortedInput);
+  console.log("value",assortedInput.value);
+  console.log("number",Number(assortedInput.value));
+  console.log("integer",Number.isInteger(Number(assortedInput.value)));
+  console.log("asso",assortedInput.reportValidity());
 }
 // Attach listeners
 document.querySelectorAll('.brownie-qty').forEach(input => {
@@ -159,42 +167,21 @@ function buildMessage(form) {
     if (control.type === "checkbox") {
       value = control.checked ? "Yes" : "No";
     } else if (control.type === "datetime-local") {
-      // Validate preferred pick-up time
-      if (control.value) {
-        const pickedTime = new Date(control.value);
-        const now = new Date();
-        const minTime = new Date(now.getTime() + 48 * 60 * 60 * 1000); // 48 hours later
-        const maxTime = new Date(now);
-        maxTime.setMonth(maxTime.getMonth() + 6); // 6 months later
-        const hours = pickedTime.getHours();
-        if (pickedTime < minTime) {
-          control.setCustomValidity("Pick-up time must be at least 48 hours from now.");
-        } else if (pickedTime > maxTime) {
-          control.setCustomValidity("Pick-up time must be within 6 months from now.");
-        } else if (hours < 9) {
-          control.setCustomValidity("Pick-up time must be after 09:00.");
-        } else if (hours >= 17) {
-          control.setCustomValidity("Pick-up time must be before 17:00.");
-        } else {
-          control.setCustomValidity(""); // clear error
-        }
-      } else {
-        control.setCustomValidity("Pick-up time is required.");
-      }
       value = new Date(control.value).toLocaleString('en-US', {
         year: 'numeric', month: 'long', day: 'numeric',
         hour: '2-digit', minute: '2-digit', hour12: false
       });
-    } else {
-      value = control.value || control.placeholder || "";
-    }
-    if (label.textContent.trim().startsWith('Leave this field empty')) {
+    } else if (label.textContent.trim().startsWith('Leave this field empty')) {
       if (value) {
         control.setCustomValidity("Do not fill the honeypot.");
       } else {
         control.setCustomValidity("");
         return;
       }
+    } else if (control.id === "assortedCount") {
+      return;
+    } else {
+      value = control.value || control.placeholder || "";
     }
     lines.push(label.textContent.replace(/^Your\b/, "My").trim() + " " + value.trim());
   });
@@ -206,7 +193,28 @@ paidCheckbox.addEventListener('change', () => {
 });
 //Reset pick up time warnings when a new pick up time is chosen
 form.querySelector('input[type="datetime-local"]').addEventListener('input', (timeInput) => {
-  timeInput.target.setCustomValidity('');
+  // Validate preferred pick-up time
+  if (timeInput.value) {
+    const pickedTime = new Date(timeInput.value);
+    const now = new Date();
+    const minTime = new Date(now.getTime() + 48 * 60 * 60 * 1000); // 48 hours later
+    const maxTime = new Date(now);
+    maxTime.setMonth(maxTime.getMonth() + 6); // 6 months later
+    const hours = pickedTime.getHours();
+    if (pickedTime < minTime) {
+      timeInput.setCustomValidity("Pick-up time must be at least 48 hours from now.");
+    } else if (pickedTime > maxTime) {
+      timeInput.setCustomValidity("Pick-up time must be within 6 months from now.");
+    } else if (hours < 9) {
+      timeInput.setCustomValidity("Pick-up time must be after 09:00.");
+    } else if (hours >= 17) {
+      timeInput.setCustomValidity("Pick-up time must be before 17:00.");
+    } else {
+      timeInput.setCustomValidity(""); // clear error
+    }
+  } else {
+    timeInput.setCustomValidity("Pick-up time is required.");
+  }
 });
 form.addEventListener('submit', e => {
   e.preventDefault(); // prevent page refresh
