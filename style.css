@@ -154,16 +154,12 @@ fieldset {
   border: 1px solid var(--logoText);
 }
 textarea, input {
-  background: var(--logoBack);
-  accent-color: var(--logoBack);
   border: 1px solid var(--logoText);
   padding: 0.5em;
 }
 textarea, input[type="text"] {
   width: 100%;
   box-sizing: border-box; 
-}
-input:disabled {
 }
 .honeypot {
   position: absolute;
