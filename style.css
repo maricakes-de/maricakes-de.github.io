@@ -110,8 +110,8 @@ section {
   animation: flashBorder 1s infinite;
 }
 @keyframes flashBorder {
-  0%, 50%, 100% { border-color: currentColor; }
-  25%, 75% { border-color: transparent; }
+  0%, 50%, 100% { background-color: transparent; }
+  25%, 75% { background-color: var(--logoBack); }
 }
 .product {
   text-align: center;

@@ -125,9 +125,7 @@ function updateOrderSummary() {
   orderedBrownies.textContent = orderedList.join('\n');
   document.getElementById('totalPrice').textContent = total.toFixed(2);
   document.getElementById("boxCount").textContent = boxCount;
-  document.getElementById("assortedCount").textContent = (assortedCount/6).toFixed(1);
-  //if (Number.isInteger(Number(assortedInput.value))) assortedInput.setCustomValidity("");
-  //else assortedInput.setCustomValidity("You have an unfilled box.");
+  document.getElementById("assortedCount").textContent = Math.floor(assortedCount/6);
 }
 // Attach listeners
 updateOrderSummary();
@@ -197,8 +195,9 @@ paidCheckbox.addEventListener('change', () => {
   document.querySelector('label:has(input[placeholder="None"]) input[type="text"]').disabled = !paidCheckbox.checked;
 });
 //Reset pick up time warnings when a new pick up time is chosen
-form.querySelector('input[type="datetime-local"]').addEventListener('input', (timeInput) => {
+form.querySelector('input[type="datetime-local"]').addEventListener('input', (event) => {
   // Validate preferred pick-up time
+  const timeInput = event.target;
   if (timeInput.value) {
     const pickedTime = new Date(timeInput.value);
     const now = new Date();
