@@ -2,6 +2,7 @@ function showSection(sectionId, btn) {
   const fillMessage = document.getElementById("fillMessage");
   if (fillMessage) {
     fillMessage.classList.add("flash");
+    alert('Fill your box!');
   } else {
     document.querySelectorAll('section').forEach(sec => sec.style.display = 'none');
     document.getElementById(sectionId).style.display = 'block';
@@ -60,11 +61,17 @@ Object.entries(brownies).forEach(([id, brownie]) => {
   const title = document.createElement('h2');
   title.textContent = `${brownie.name} box`;
   txtBox6.appendChild(title);
-  const desc6 = document.createElement('p');
-  desc6.innerHTML = `${brownie.desc}<br>price ${(5 * brownie.price).toFixed(2)} EUR<br>`;
+  const desc6 = document.createElement('span');
+  desc6.innerHTML = `${brownie.desc}<br>Price ${(5 * brownie.price).toFixed(2)} EUR.<br>`;
   txtBox6.appendChild(desc6);
   const label6 = document.createElement('label');
-  label6.textContent = 'Qty: ';
+  label6.className = 'quantityLbl';
+  label6.textContent = 'Quantity: ';
+  const quantity = document.createElement('span');
+  quantity.className = 'quantity';
+  quantity.textContent = `0`;
+  const space = document.createElement('span');
+  space.textContent = ` `;
   const minusBtn = document.createElement('button');
   minusBtn.type = 'button';
   minusBtn.textContent = '−';
@@ -76,23 +83,15 @@ Object.entries(brownies).forEach(([id, brownie]) => {
   });
   const input6 = document.createElement('input');
   input6.type = 'number';
-  input6.className = 'brownie-qty';
+  input6.className = 'brownie-input';
   input6.name = `B${id}`;
   input6.min = 0;
   input6.max = 5;
   input6.value = 0;
-  const plusBtn = document.createElement('button');
-  plusBtn.type = 'button';
-  plusBtn.textContent = '+';
-  plusBtn.addEventListener('click', () => {
-    if (parseInt(input6.value, 10) < parseInt(input6.max, 10)) {
-      input6.value = parseInt(input6.value, 10) + 1;
-      input6.dispatchEvent(new Event('input'));
-    }
-  });
+  label6.appendChild(quantity);
+  label6.appendChild(space);
   label6.appendChild(minusBtn);
   label6.appendChild(input6);
-  label6.appendChild(plusBtn);
   txtBox6.appendChild(label6);
   boxCard.appendChild(txtBox6);
   const increaseQty6 = () => {
@@ -116,19 +115,16 @@ Object.entries(brownies).forEach(([id, brownie]) => {
   h2.textContent = brownie.name;
   textBox.appendChild(h2);
   const desc = document.createElement('div');
-  desc.innerHTML = `${brownie.desc}<br>price ${(brownie.price).toFixed(2)} EUR<br>`;
+  desc.innerHTML = `${brownie.desc}<br>Price ${(brownie.price).toFixed(2)} EUR.<br>`;
   textBox.appendChild(desc);
-  const label = document.createElement('label');
-  label.textContent = 'Qty: ';
   const input = document.createElement('input');
   input.type = 'number';
-  input.className = 'brownie-qty';
+  input.className = 'brownie-input';
   input.name = `A${id}`;
   input.min = 0;
   input.max = 5;
   input.value = 0;
-  label.appendChild(input);
-  textBox.appendChild(label);
+  textBox.appendChild(input);
   brownieCard.appendChild(textBox);
   const increaseQty = () => {
     if ( parseInt(input.value, 10) < parseInt(input.max, 10) ) {
@@ -147,9 +143,16 @@ function updateOrderSummary() {
   document.getElementById('assortedGrid').innerHTML = '';
   let orderedList = [];
   let boxOf6;
-  document.querySelectorAll('.brownie-qty').forEach(input => {
+  document.querySelectorAll('.brownie-input').forEach(input => {
     let qty = Math.min(Math.max(parseInt(input.value) || 0, 0), 5); // 0–5 only
     input.value = qty;
+    const boxCard = input.closest('.product');
+    if (boxCard) {
+      const quantity= boxCard.querySelector('.quantity');
+      if (quantity) {
+        quantity.textContent = qty;
+      }
+    }
     if (qty > 0) {
       const brownieId = input.name.substring(1)
       if (input.name.startsWith("B")) {
@@ -203,7 +206,7 @@ function updateOrderSummary() {
 }
 // Attach listeners
 updateOrderSummary();
-document.querySelectorAll('.brownie-qty').forEach(input => {
+document.querySelectorAll('.brownie-input').forEach(input => {
   input.addEventListener('input', updateOrderSummary);
 });
 document.querySelectorAll('label').forEach(label => {
