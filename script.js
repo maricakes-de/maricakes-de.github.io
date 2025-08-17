@@ -32,73 +32,73 @@ function showSection(sectionId, btn) {
 const brownies = {
   choc: {
     price: 1.4,
-    name: "Choco Chip Crunch",
+    name: "Choco chip crunch",
     desc: "Fudgy brownie with velvety chocolate cream topped with crunchy choco chips.",
     ingredients: ["chocolate cream", "chocolate chips"]
   },
   almond: {
     price: 1.4,
-    name: "Nutty Indulgence",
+    name: "Nutty indulgence",
     desc: "Fudgy brownie with rich chocolate drizzle and roasted hazelnuts for a simple, nutty delight.",
     ingredients: ["chocolate syrup", "hazelnuts"]
   },
   banana: {
     price: 1.5,
-    name: "Nutty Monkey",
+    name: "Nutty monkey",
     desc: "Fudgy brownie with creamy peanut butter and sweet banana slices, a classic duo.",
     ingredients: ["peanut butter", "banana"]
   },
   sprinkle: {
     price: 1.6,
-    name: "Party Pop",
+    name: "Party pop",
     desc: "Fudgy brownie with a chocolate drizzle and colorful sprinkles.",
     ingredients: ["chocolate syrup", "sprinkles"]
   },
   kinder: {
     price: 1.7,
-    name: "Kinder Dream",
+    name: "Kinder dream",
     desc: "Fudgy brownie with luscious Kinder cream and a crispy Kinder Bueno topping.",
     ingredients: ["kinder cream", "kinder bueno"]
   },
   biscoff: {
     price: 1.7,
-    name: "Lotus Luxe",
+    name: "Lotus luxe",
     desc: "Fudgy brownie with creamy Biscoff spread and a Lotus cookie for a spiced caramel twist.",
     ingredients: ["biscoff spread", "lotus biscuit"]
   },
   caramel: {
     price: 2.0,
-    name: "Golden Duo",
+    name: "Golden duo",
     desc: "Fudgy brownie with swirls of caramel and chocolate drizzles, a rich and balanced pairing.",
     ingredients: ["caramel", "chocolate syrup", "cornstarch"]
   },
   mocha: {
     price: 2.0,
-    name: "Mocha Magic",
+    name: "Mocha magic",
     desc: "Fudgy brownie with smooth chocolate cream and chocolate-coated mocha beans for a rich coffee kick.",
     ingredients: ["chocolate cream", "coffee"]
   },
   oreo: {
     price: 2.4,
-    name: "Cookies & Dream",
+    name: "Cookies & dream",
     desc: "Fudgy brownie with whipped cream and crushed Oreos, the perfect cookies & cream fix.",
     ingredients: ["cream", "oreo", "gelatin"]
   },
   strawb: {
     price: 2.4,
-    name: "Berry Bliss",
+    name: "Berry bliss",
     desc: "Fudgy brownie with silky cream and fresh strawberry slices for a fruity, dreamy bite.",
     ingredients: ["cream", "strawberries", "gelatin"]
   },
   marsh: {
     price: 2.4,
-    name: "Caramel Carnival",
+    name: "Caramel carnival",
     desc: "Fudgy brownie with rainbow-twisted marshmallows, crunchy hazelnuts, and gooey caramel drizzle.",
     ingredients: ["marshmallows", "hazelnuts", "caramel"]
   },
   chocMar: {
     price: 2.4,
-    name: "Choco Carnival",
+    name: "Choco carnival",
     desc: "Fudgy brownie with rainbow marshmallows, roasted hazelnuts, and rich chocolate drizzle.",
     ingredients: ["marshmallows", "hazelnuts", "chocolate syrup"]
   }
@@ -124,7 +124,7 @@ Object.entries(brownies).forEach(([id, brownie]) => {
   const desc6 = document.createElement('span');
   desc6.innerHTML = `${brownie.desc}<br><br>
     Ingredients: ${brownie.ingredients.join(', ')}, wheat flour, eggs, sugar, cocoa, butter, vanilla, salt, vegetable oil.<br><br>
-    Price ${(5 * brownie.price).toFixed(2)} EUR.<br>`;
+    Box of six price: ${(5 * brownie.price).toFixed(2)} EUR.<br>`;
   txtBox6.appendChild(desc6);
   const label6 = document.createElement('label');
   label6.className = 'quantityLbl';
@@ -179,7 +179,7 @@ Object.entries(brownies).forEach(([id, brownie]) => {
   const desc = document.createElement('div');
   desc.innerHTML = `${brownie.desc}<br><br>
     Ingredients: ${brownie.ingredients.join(', ')}, wheat flour, eggs, sugar, cocoa, butter, vanilla, salt, vegetable oil.<br><br>
-    Price ${(brownie.price).toFixed(2)} EUR.<br>`;
+    Individual price: ${(brownie.price).toFixed(2)} EUR.<br>`;
   textBox.appendChild(desc);
   const input = document.createElement('input');
   input.type = 'number';
