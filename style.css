@@ -1,15 +1,13 @@
 :root {
   --logoPetal: hsl(18, 61%, 87%);
   --logoSpatula: hsl(14, 63%, 76%);
-  --logoBack: hsl(39, 56%, 85%);
   --logoBack: hsl(39, 100%, 95%);
   --logoCream: hsl(39, 20%, 90%);
   --logoPink: hsl(8, 81%, 75%);
   --logoText: hsl(8, 81%, 30%);
   --logoShadow: hsl(18, 73%, 84%);
   --logoWood: hsl(32, 55%, 56%);
-  --lightPetal: hsl(12, 78%, 93%);
-  --lightPetal: hsl(12, 100%, 88%);
+  --lightPetal: hsl(12, 70%, 88%);
 }
 @font-face {
   font-family: "Style Script";
@@ -67,7 +65,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: var(--logoSpatula);
+  color: var(--logoPink);
 }
 .icon{
   height: 1em;
@@ -145,7 +143,7 @@ section {
 }
 .product img {
   width: 100%;
-  filter: drop-shadow(.2em .5em .1em rgba(0,0,0,.2));
+  filter: drop-shadow(0 1em .1em rgba(0,0,0,.4));
 }
 .mouseOverBright:hover {
   filter: brightness(1.2);
@@ -153,11 +151,14 @@ section {
 .brownieBox {
   aspect-ratio: 1.5;
   border: 1px solid var(--logoText);
+  gap: 1em;
 }
 .brownieBox img {
-  width: 38%;
-  margin: -3%;
-  filter: drop-shadow(.2em .5em .1em rgba(0,0,0,.2));
+  width: 33%;
+  filter: drop-shadow(0 .5em .05em rgba(0,0,0,.4));
+}
+.customCake img {
+  filter: none;
 }
 .brownie-input {
   display: none;
