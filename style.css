@@ -83,14 +83,15 @@ button {
 nav {
   display: flex;
   background-color: var(--logoBack);
+  position: sticky;
+  top: 0;          
+  z-index: 1000;   
 }
 nav button {
   flex: 1;
   background-color: var(--logoBack);
   border: none;
   border-radius: .3em .3em 0em 0em;
-  font-family: "Style Script", cursive;
-  font-size: 1.5em;
   color: var(--logoText);
 }
 nav button.active {

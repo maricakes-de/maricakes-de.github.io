@@ -306,9 +306,9 @@ function updateOrderSummary() {
   }
   const orderedBrownies = document.getElementById('orderedBrownies');
   orderedBrownies.textContent = orderedList.join('\n');
-  document.getElementById('totalPrice').textContent = total.toFixed(2);
+  document.querySelectorAll('.totalPrice').forEach(el => el.textContent = total.toFixed(2));
   document.getElementById("boxCount").textContent = boxCount;
-  document.getElementById("assortedCount").textContent = Math.floor(assortedCount/6);
+  document.getElementById("assortedCount").textContent = (assortedCount/6).toFixed(1);
 }
 // Attach listeners
 updateOrderSummary();
@@ -345,7 +345,7 @@ const form = document.getElementById("orderForm");
 function buildMessage(form) {
   const lines = [];
   lines.push(document.getElementById('orderedBrownies').textContent.trim());
-  lines.push("Price: " + document.getElementById('totalPrice').textContent.trim() + " EUR");
+  lines.push("Price: " + document.querySelector('.totalPrice').textContent.trim() + " EUR");
   form.querySelectorAll("label").forEach(label => {
     const control = label.control || label.querySelector("input, textarea");
     if (!control) return;

@@ -33,7 +33,7 @@
   <button class="active" onclick="showSection('brownies', this)">Brownie box (<span id="boxCount">0</span>)</button>
   <button onclick="showSection('assorted', this)">Assorted box (<span id="assortedCount">0</span>)</button>
   <button onclick="showSection('custom', this)">Custom cakes<img src="flower.svg" alt="flower" class="icon"></button>
-  <button onclick="showSection('order-section', this)">Place order<img src="flower.svg" alt="flower" class="icon"></button>
+  <button onclick="showSection('order-section', this)">Place order (<span class="totalPrice">0.00</span>)</button>
 </nav>
 
 <section id="brownies" class="active-section">
@@ -156,7 +156,7 @@
   <fieldset>
     <legend>Your order:</legend>
     <pre id="orderedBrownies">No brownies selected.</pre>
-    Price: <span id="totalPrice">0.00</span> EUR<br><br>
+    Price: <span class="totalPrice">0.00</span> EUR<br><br>
     <label>Paid:<input type="checkbox"></label><br>
     <label>Payer's Account Name:<br>
     <input type="text" disabled placeholder="None"></label><br><br>
