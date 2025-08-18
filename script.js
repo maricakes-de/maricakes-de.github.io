@@ -31,52 +31,52 @@ function showSection(sectionId, btn) {
 }
 const brownies = {
   choc: {
-    price: 1.4,
+    price: 1.8,
     name: "Choco chip crunch",
     desc: "Fudgy brownie with velvety chocolate cream topped with crunchy choco chips.",
     ingredients: ["chocolate cream", "chocolate chips"]
   },
   almond: {
-    price: 1.4,
+    price: 1.8,
     name: "Nutty indulgence",
     desc: "Fudgy brownie with rich chocolate drizzle and roasted hazelnuts for a simple, nutty delight.",
     ingredients: ["chocolate syrup", "hazelnuts"]
   },
   banana: {
-    price: 1.5,
+    price: 1.8,
     name: "Nutty monkey",
     desc: "Fudgy brownie with creamy peanut butter and sweet banana slices, a classic duo.",
     ingredients: ["peanut butter", "banana"]
   },
   sprinkle: {
-    price: 1.6,
+    price: 1.8,
     name: "Party pop",
     desc: "Fudgy brownie with a chocolate drizzle and colorful sprinkles.",
     ingredients: ["chocolate syrup", "sprinkles"]
   },
-  kinder: {
-    price: 1.7,
-    name: "Kinder dream",
-    desc: "Fudgy brownie with luscious Kinder cream and a crispy Kinder Bueno topping.",
-    ingredients: ["kinder cream", "kinder bueno"]
-  },
-  biscoff: {
-    price: 1.7,
-    name: "Lotus luxe",
-    desc: "Fudgy brownie with creamy Biscoff spread and a Lotus cookie for a spiced caramel twist.",
-    ingredients: ["biscoff spread", "lotus biscuit"]
-  },
   caramel: {
-    price: 2.0,
+    price: 1.8,
     name: "Golden duo",
     desc: "Fudgy brownie with swirls of caramel and chocolate drizzles, a rich and balanced pairing.",
     ingredients: ["caramel", "chocolate syrup", "cornstarch"]
   },
   mocha: {
-    price: 2.0,
+    price: 1.8,
     name: "Mocha magic",
     desc: "Fudgy brownie with smooth chocolate cream and chocolate-coated mocha beans for a rich coffee kick.",
     ingredients: ["chocolate cream", "coffee"]
+  },
+  kinder: {
+    price: 2.4,
+    name: "Kinder dream",
+    desc: "Fudgy brownie with luscious Kinder cream and a crispy Kinder Bueno topping.",
+    ingredients: ["kinder cream", "kinder bueno"]
+  },
+  biscoff: {
+    price: 2.4,
+    name: "Lotus luxe",
+    desc: "Fudgy brownie with creamy Biscoff spread and a Lotus cookie for a spiced caramel twist.",
+    ingredients: ["biscoff spread", "lotus biscuit"]
   },
   oreo: {
     price: 2.4,
