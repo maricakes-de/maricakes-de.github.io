@@ -50,6 +50,7 @@ h1 {
 }
 .logo {
   width: 8em;
+  aspect-ratio : 1;
 }
 .contact{
   font-family: 'Varela Round';
