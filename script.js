@@ -122,10 +122,31 @@ Object.entries(brownies).forEach(([id, brownie]) => {
   title.textContent = `${brownie.name} box`;
   txtBox6.appendChild(title);
   const desc6 = document.createElement('span');
-  desc6.innerHTML = `${brownie.desc}<br><br>
-    Ingredients: ${brownie.ingredients.join(', ')}, wheat flour, eggs, sugar, cocoa, butter, vanilla, salt, vegetable oil.<br><br>
-    Box of six price: ${(5 * brownie.price).toFixed(2)} EUR.<br>`;
+  desc6.innerHTML = `
+    ${brownie.desc}<br>
+    <p class="ingredients">
+      <span class="toggle-ing">Ingredients</span>
+      <span class="short-ing"></span>
+      <span class="full-ing">:
+        ${brownie.ingredients.join(', ')}, wheat flour, eggs, sugar, cocoa, butter, vanilla, salt, vegetable oil
+      </span>
+    </p>
+    <p>Box of six : ${(5 * brownie.price).toFixed(2)} EUR.</p>
+  `;
   txtBox6.appendChild(desc6);
+  const toggle6 = desc6.querySelector('.toggle-ing');
+  const shortIng6 = desc6.querySelector('.short-ing');
+  const fullIng6 = desc6.querySelector('.full-ing');
+  fullIng6.style.display = "none"; // hide full list initially
+  toggle6.addEventListener('click', function () {
+    if (fullIng6.style.display === "none") {
+      fullIng6.style.display = "inline";
+      shortIng6.style.display = "none";
+    } else {
+      fullIng6.style.display = "none";
+      shortIng6.style.display = "inline";
+    }
+  });
   const label6 = document.createElement('label');
   label6.className = 'quantityLbl';
   label6.textContent = 'Quantity: ';
@@ -177,10 +198,31 @@ Object.entries(brownies).forEach(([id, brownie]) => {
   h2.textContent = brownie.name;
   textBox.appendChild(h2);
   const desc = document.createElement('div');
-  desc.innerHTML = `${brownie.desc}<br><br>
-    Ingredients: ${brownie.ingredients.join(', ')}, wheat flour, eggs, sugar, cocoa, butter, vanilla, salt, vegetable oil.<br><br>
-    Individual price: ${(brownie.price).toFixed(2)} EUR.<br>`;
+  desc.innerHTML = `
+    ${brownie.desc}<br>
+    <p class="ingredients">
+      <span class="toggle-ing">Ingredients</span>
+      <span class="short-ing"></span>
+      <span class="full-ing">:
+        ${brownie.ingredients.join(', ')}, wheat flour, eggs, sugar, cocoa, butter, vanilla, salt, vegetable oil
+      </span>
+    </p>
+    <p>Individual price: ${brownie.price.toFixed(2)} EUR.</p>
+  `;
   textBox.appendChild(desc);
+  const toggle = desc.querySelector('.toggle-ing');
+  const shortIng = desc.querySelector('.short-ing');
+  const fullIng = desc.querySelector('.full-ing');
+  fullIng.style.display = "none"; // hide full list initially
+  toggle.addEventListener('click', function () {
+    if (fullIng.style.display === "none") {
+      fullIng.style.display = "inline";
+      shortIng.style.display = "none";
+    } else {
+      fullIng.style.display = "none";
+      shortIng.style.display = "inline";
+    }
+  });
   const input = document.createElement('input');
   input.type = 'number';
   input.className = 'brownie-input';

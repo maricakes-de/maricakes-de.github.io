@@ -48,7 +48,6 @@ h1 {
 }
 .logo {
   width: 8em;
-  margin: 0 0 0 1em;
 }
 .contact{
   font-family: 'Varela Round';
@@ -105,15 +104,15 @@ nav button:hover {
 }
 section {
   display: none;
-  margin: 2em;
+  margin: .2em;
 }
 .active-section {
   display: block;
 }
 .brownies-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 15em);
-  gap: 1em;
+  grid-template-columns: repeat(auto-fill, 11em);
+  gap: .4em;
 }
 .textBox {
   border: 1px solid var(--logoText);
@@ -121,7 +120,7 @@ section {
 }
 #fillMessage {
   display: inline-block;
-  width: 33%; 
+  width: 32%; 
   aspect-ratio: 1;
   vertical-align: bottom;
 }
@@ -157,6 +156,10 @@ section {
   width: 33%;
   filter: drop-shadow(0 .5em .05em rgba(0,0,0,.4));
 }
+.toggle-ing {
+  text-decoration: underline;
+  cursor: pointer;
+}
 .customCake img {
   filter: none;
 }
@@ -179,7 +182,7 @@ textarea, input[type="text"] {
   left: -9999px; /* Moves it far off screen */
 }
 .foot{
-  margin: 2em;
+  margin: .2em;
 }
 * {
   border-radius: .3em;
