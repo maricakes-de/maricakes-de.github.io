@@ -118,6 +118,7 @@ Object.entries(brownies).forEach(([id, brownie]) => {
   for (let step = 0; step < 6; step++) {
     const img = document.createElement('img');
     img.src = `brownies/${id}Top.avif`;
+    console.log('121',img.src)
     img.alt = `${brownie.name} brownie top view`;
     boxOf6.appendChild(img);
   }
@@ -251,6 +252,40 @@ Object.entries(brownies).forEach(([id, brownie]) => {
   img.classList.add('mouseOverBright');
   document.getElementById('browniesGrid').appendChild(brownieCard);
 });
+const cakeDictionary = [
+  {id: 'Almond', title: 'Toasted almond cake', desc: 'Light and fluffy cake topped with roasted almonds and whipped cream.'},
+  {id: 'Carrot', title: 'Carrot crunch', desc: 'Carrot almond, and cream.'},
+  {id: 'Cookie', title: 'Cookies & cream', desc: 'Vanilla sponge cake topped with crunchy cookies and creamy chocolate drizzle.'},
+  {id: 'Ferrero', title: 'Ferrero strawberry delight', desc: 'A decadent cake topped with Ferrero Rocher chocolates and juicy strawberries.'},
+  {id: 'Heart', title: 'Strawberry Valentine', desc: 'Rich chocolate base crowned with fresh strawberries and chocolate hearts.'},
+  {id: 'Winter', title: 'Winter wonderland', desc: 'Cool tones and snowy touches for a festive and elegant winter celebration.'},
+  {id: 'Berries', title: 'Berry bouquet', desc: 'A fresh mix of berries over a soft sponge cake, customizable for any occasion.'},
+  {id: 'Blue', title: 'Blue bear cake', desc: 'Adorable bear-themed cake with white and blue sugar roses. Ideal for baby showers and birthdays.'},
+  {id: 'Butterfly', title: 'Butterfly garden', desc: 'A delicate cake topped with butterflies and floral accents.'},
+  {id: 'Chanel', title: 'Chanel cake', desc: 'Luxurious pink and white cake for fashionistas and glam celebrations.'},
+  {id: 'Harry Potter', title: 'Harry Potter magic', desc: 'A magical cake for fans of the wizarding world, complete with Hogwarts elements.'},
+  {id: "Mother's Day", title: 'Sweetest mum cake', desc: 'Chocolate cake topped with chocolate icing and strawberries, perfect for celebrating Mother’s Day.'},
+  {id: 'Halloween', title: 'Halloween cake', desc: 'Cream roses with a gruesome cherry splattering.'}
+];
+const grid = document.getElementById('cakesGrid');
+
+cakeDictionary.forEach(cake => {
+  const card = document.createElement('div');
+  card.classList.add('product');
+
+  const img = document.createElement('img');
+  img.src = `cakes/${cake.id}.avif`;
+  img.alt = cake.title;
+  img.onload = () => img.classList.add('loaded');
+
+  const textBox = document.createElement('div');
+  textBox.classList.add('textBox');
+  textBox.innerHTML = `<h2>${cake.title}</h2>${cake.desc}`;
+
+  card.appendChild(img);
+  card.appendChild(textBox);
+  grid.appendChild(card);
+});
 function updateOrderSummary() {
   let total = 0;
   let boxCount = 0;
@@ -287,9 +322,9 @@ function updateOrderSummary() {
             boxOf6.className = 'brownieBox';
             document.getElementById('assortedGrid').appendChild(boxOf6);
           }
-          //boxOf6.innerHTML += `<img src="brownies/${brownieId}Top.avif" alt="${brownies[brownieId].name} brownie top view">`;
           const img = document.createElement('img');
           img.src = `brownies/${brownieId}Top.avif`;
+          console.log('329',img.src)
           img.alt = `${brownies[brownieId].name} brownie top view`;
           img.addEventListener('click', decreaseQty);
           img.classList.add('mouseOverBright');
