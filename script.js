@@ -59,7 +59,7 @@ const brownies = {
   sprinkle: {
     price: 1.8,
     name: "Party pop",
-    desc: "Fudgy brownie with a chocolate drizzle and colorful sprinkles.",
+    desc: "Fudgy brownie with a chocolate drizzle and colourful sprinkles.",
     ingredients: ["chocolate syrup", "sprinkles"]
   },
   caramel: {
@@ -259,7 +259,7 @@ const cakeDictionary = [
   {id: 'Ferrero', title: 'Ferrero strawberry delight', desc: 'A decadent cake topped with Ferrero Rocher chocolates and juicy strawberries.'},
   {id: 'Heart', title: 'Strawberry Valentine', desc: 'Rich chocolate base crowned with fresh strawberries and chocolate hearts.'},
   {id: 'Winter', title: 'Winter wonderland', desc: 'Cool tones and snowy touches for a festive and elegant winter celebration.'},
-  {id: 'Berries', title: 'Berry bouquet', desc: 'A fresh mix of berries over a soft sponge cake, customizable for any occasion.'},
+  {id: 'Berries', title: 'Berry bouquet', desc: 'A fresh mix of berries over a soft sponge cake, customisable for any occasion.'},
   {id: 'Blue', title: 'Blue bear cake', desc: 'Adorable bear-themed cake with white and blue sugar roses. Ideal for baby showers and birthdays.'},
   {id: 'Butterfly', title: 'Butterfly garden', desc: 'A delicate cake topped with butterflies and floral accents.'},
   {id: 'Chanel', title: 'Chanel cake', desc: 'Luxurious pink and white cake for fashionistas glam celebrations.'},
