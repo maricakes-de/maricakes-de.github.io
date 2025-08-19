@@ -20,11 +20,13 @@
   font-display: swap;
 }
 body {
-  background-color: var(--lightPetal);
-  background-image: url("marble.avif");
   color: var(--logoText);
   font-family: 'Varela Round';
   margin: 0;
+  background-color: var(--lightPetal);
+}
+body.loaded {
+  background-image: url("marble.avif");
 }
 header, h1, h2, h3 {
   font-family: "Style Script", cursive;
@@ -100,11 +102,13 @@ nav button {
 }
 nav button.active {
   background-color: var(--lightPetal);
-  background-image: url("marble.avif");
   text-decoration: underline;
 }
 nav button:hover {
   background: var(--logoPetal);
+}
+nav button.loaded:hover,
+nav button.loaded.active {
   background-image: url("marble.avif");
 }
 section {

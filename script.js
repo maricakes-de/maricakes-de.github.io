@@ -1,3 +1,11 @@
+const marble = new Image();
+marble.src = 'marble.avif';
+marble.onload = () => {
+  document.body.classList.add('loaded');
+  document.querySelectorAll('nav button').forEach(btn => {
+    btn.classList.add('loaded');
+  });
+};
 function showSection(sectionId, btn) {
   const fillMessage = document.getElementById("fillMessage");
   if (fillMessage) {
