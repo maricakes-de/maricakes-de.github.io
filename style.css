@@ -151,6 +151,9 @@ section {
 }
 .product img {
   width: 100%;
+}
+.brownie img {
+  aspect-ratio: 1;
   filter: drop-shadow(0 1em .1em rgba(0,0,0,.4));
 }
 .mouseOverBright:hover {
@@ -169,9 +172,6 @@ section {
 .toggle-ing {
   text-decoration: underline;
   cursor: pointer;
-}
-.customCake img {
-  filter: none;
 }
 .brownie-input {
   display: none;

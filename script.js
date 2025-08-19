@@ -122,7 +122,7 @@ Object.entries(brownies).forEach(([id, brownie]) => {
     boxOf6.appendChild(img);
   }
   const boxCard = document.createElement('div');
-  boxCard.className = 'product';
+  boxCard.className = 'product brownie';
   boxCard.appendChild(boxOf6);
   const txtBox6 = document.createElement('div');
   txtBox6.className = 'textBox';
@@ -193,9 +193,10 @@ Object.entries(brownies).forEach(([id, brownie]) => {
   };
   boxOf6.addEventListener('click', increaseQty6);
   document.getElementById('brownieBoxGrid').appendChild(boxCard);
-
+});
+Object.entries(brownies).forEach(([id, brownie]) => {
   const brownieCard = document.createElement('div');
-  brownieCard.className = 'product';
+  brownieCard.className = 'product brownie';
   const img = document.createElement('img');
   img.src = `brownies/${id}.avif`;
   img.alt = `${brownie.name} brownie side view`;
