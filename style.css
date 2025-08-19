@@ -25,9 +25,6 @@ body {
   margin: 0;
   background-color: var(--lightPetal);
 }
-body.loaded {
-  background-image: url("marble.avif");
-}
 header, h1, h2, h3 {
   font-family: "Style Script", cursive;
   margin: 0;
@@ -107,9 +104,10 @@ nav button.active {
 nav button:hover {
   background: var(--logoPetal);
 }
+body.loaded, 
 nav button.loaded:hover,
 nav button.loaded.active {
-  background-image: url("marble.avif");
+  background-image: url('marble.avif');
 }
 section {
   display: none;
@@ -129,7 +127,7 @@ section {
 }
 #fillMessage {
   display: inline-block;
-  width: 32%; 
+  width: 33%; 
   aspect-ratio: 1;
   vertical-align: bottom;
 }
@@ -160,9 +158,8 @@ section {
   filter: brightness(1.2);
 }
 .brownieBox {
-  aspect-ratio: 1.5;
+  aspect-ratio: 1.4;
   border: 1px solid var(--logoText);
-  gap: 1em;
 }
 .brownieBox img {
   width: 33%;
