@@ -255,7 +255,7 @@ const cakeDictionary = [
   {id: "mother",    title: "Mother's day"},
   {id: 'almond',    title: 'Toasted almond'},
   {id: 'strawb',    title: 'Berry birthday'},
-  {id: 'macadamia', title: 'Macadamia & roses'},
+  {id: 'macadamia', title: 'Cashews & roses'},
   {id: 'ferrero',   title: 'Ferrero strawberry'},
   {id: 'potter',    title: 'Harry Potter'},
   {id: 'blue',      title: 'Blue bear'},
