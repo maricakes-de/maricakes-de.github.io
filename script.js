@@ -118,7 +118,6 @@ Object.entries(brownies).forEach(([id, brownie]) => {
   for (let step = 0; step < 6; step++) {
     const img = document.createElement('img');
     img.src = `brownies/${id}Top.avif`;
-    console.log('121',img.src)
     img.alt = `${brownie.name} brownie top view`;
     boxOf6.appendChild(img);
   }
@@ -253,25 +252,24 @@ Object.entries(brownies).forEach(([id, brownie]) => {
   document.getElementById('browniesGrid').appendChild(brownieCard);
 });
 const cakeDictionary = [
-  {id: 'Almond', title: 'Toasted almond cake', desc: 'Light and fluffy cake topped with roasted almonds and whipped cream.'},
-  {id: 'Carrot', title: 'Carrot crunch', desc: 'Carrot, walnut, and cream.'},
-  {id: 'Cookie', title: 'Cookies & cream', desc: 'Vanilla sponge cake topped with crunchy cookies chocolate sprinkles.'},
-  {id: 'Ferrero', title: 'Ferrero strawberry delight', desc: 'A decadent cake topped with Ferrero Rocher chocolates and juicy strawberries.'},
-  {id: 'Heart', title: 'Strawberry Valentine', desc: 'Rich chocolate base crowned with fresh strawberries and chocolate hearts.'},
-  {id: 'Winter', title: 'Winter wonderland', desc: 'Cool tones and snowy touches for a festive and elegant winter celebration.'},
-  {id: 'Berries', title: 'Berry bouquet', desc: 'A fresh mix of berries over a soft sponge cake, customisable for any occasion.'},
-  {id: 'Blue', title: 'Blue bear cake', desc: 'Adorable bear-themed cake with white and blue sugar roses. Ideal for baby showers and birthdays.'},
-  {id: 'Butterfly', title: 'Butterfly garden', desc: 'A delicate cake topped with butterflies and floral accents.'},
-  {id: 'Chanel', title: 'Chanel cake', desc: 'Luxurious pink and white cake for fashionistas glam celebrations.'},
-  {id: 'Harry Potter', title: 'Harry Potter magic', desc: 'A magical cake for fans of the wizarding world, topped with a model Hogwarts.'},
-  {id: "Mother's Day", title: 'Sweetest mum cake', desc: 'Chocolate cake topped with chocolate icing and strawberries, perfect for celebrating Mother’s Day.'},
-  {id: 'Halloween', title: 'Halloween cake', desc: 'Cream roses with a gruesome cherry splattering.'}
+  {id: "mother",    title: "Mother's day"},
+  {id: 'almond',    title: 'Toasted almond'},
+  {id: 'strawb',    title: 'Berry birthday'},
+  {id: 'macadamia', title: 'Macadamia & roses'},
+  {id: 'ferrero',   title: 'Ferrero strawberry'},
+  {id: 'potter',    title: 'Harry Potter'},
+  {id: 'blue',      title: 'Blue bear'},
+  {id: 'butterfly', title: 'Butterfly garden'},
+  {id: 'chanel',    title: 'Chanel'},
+  {id: 'winter',    title: 'Winter wonderland'},
+  {id: 'rose',      title: 'Rose garden'},
 ];
 const grid = document.getElementById('cakesGrid');
 
 cakeDictionary.forEach(cake => {
   const card = document.createElement('div');
   card.classList.add('product');
+  card.classList.add('cake');
 
   const img = document.createElement('img');
   img.src = `cakes/${cake.id}.avif`;
@@ -280,7 +278,7 @@ cakeDictionary.forEach(cake => {
 
   const textBox = document.createElement('div');
   textBox.classList.add('textBox');
-  textBox.innerHTML = `<h2>${cake.title}</h2>${cake.desc}`;
+  textBox.innerHTML = `<h2>${cake.title}</h2>`;
 
   card.appendChild(img);
   card.appendChild(textBox);
