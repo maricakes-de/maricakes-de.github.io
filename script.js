@@ -399,7 +399,7 @@ function buildMessage(form) {
         year: 'numeric', month: 'long', day: 'numeric',
         hour: '2-digit', minute: '2-digit', hour12: false
       });
-    } else if (label.textContent.trim().startsWith('Leave this field empty')) {
+    } else if (label.classList.contains("honeypot")) {
       if (value) {
         control.setCustomValidity("Do not fill the honeypot.");
       } else {
@@ -417,7 +417,7 @@ function buildMessage(form) {
 }
 const paidCheckbox = document.querySelector('label:has(input[type="checkbox"]) input[type="checkbox"]');
 paidCheckbox.addEventListener('change', () => {
-  document.querySelector('label:has(input[placeholder="None"]) input[type="text"]').disabled = !paidCheckbox.checked;
+  document.querySelector('#accountInput').disabled = !paidCheckbox.checked;
 });
 //Reset pick up time warnings when a new pick up time is chosen
 form.querySelector('input[type="datetime-local"]').addEventListener('input', (event) => {

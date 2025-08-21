@@ -71,6 +71,9 @@ a:hover {
   height: 1em;
   aspect-ratio: 1;
 }
+.nowrap {
+  white-space: nowrap;
+}
 button {
   font-size: 1.1em;
   cursor: pointer;
