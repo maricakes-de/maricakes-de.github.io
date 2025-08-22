@@ -110,7 +110,7 @@ body.loaded,
 nav button.loaded:hover,
 nav button.loaded.active {
   background-image: url('marble.avif'), url('marble.avif');
-  background-size: 613px 307px, 421px 419px;
+  background-size: 601px 151px, 283px 283px;
   background-position: 0 0, 89px 137px;
 }
 section {
