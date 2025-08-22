@@ -40,73 +40,73 @@ function showSection(sectionId, btn) {
 const brownies = {
   choc: {
     price: 1.8,
-    name: "Choco chip crunch",
-    desc: "Fudgy brownie with velvety chocolate cream topped with crunchy choco chips.",
+    name: "Choco Chip",
+    desc: "Fudgy brownie with velvety chocolate cream topped with crunchy chocolate chips.",
     ingredients: ["chocolate cream", "chocolate chips"]
   },
   almond: {
     price: 1.8,
-    name: "Nutty indulgence",
+    name: "Nutty Indulgence",
     desc: "Fudgy brownie with rich chocolate drizzle and roasted hazelnuts for a simple, nutty delight.",
     ingredients: ["chocolate syrup", "hazelnuts"]
   },
   banana: {
     price: 1.8,
-    name: "Nutty monkey",
+    name: "Nutty Monkey",
     desc: "Fudgy brownie with creamy peanut butter and sweet banana slices, a classic duo.",
     ingredients: ["peanut butter", "banana"]
   },
   sprinkle: {
     price: 1.8,
-    name: "Party pop",
+    name: "Party Pop",
     desc: "Fudgy brownie with a chocolate drizzle and colourful sprinkles.",
     ingredients: ["chocolate syrup", "sprinkles"]
   },
   caramel: {
     price: 1.8,
-    name: "Golden duo",
+    name: "Golden Duo",
     desc: "Fudgy brownie with swirls of caramel and chocolate drizzles, a rich and balanced pairing.",
     ingredients: ["caramel", "chocolate syrup", "cornstarch"]
   },
   mocha: {
     price: 1.8,
-    name: "Mocha magic",
+    name: "Mocha Magic",
     desc: "Fudgy brownie with smooth chocolate cream and chocolate-coated mocha beans for a rich coffee kick.",
     ingredients: ["chocolate cream", "coffee"]
   },
   kinder: {
     price: 2.4,
-    name: "Kinder dream",
+    name: "Kinder Dream",
     desc: "Fudgy brownie with luscious Kinder cream and a crispy Kinder Bueno topping.",
     ingredients: ["kinder cream", "kinder bueno"]
   },
   biscoff: {
     price: 2.4,
-    name: "Lotus luxe",
+    name: "Lotus Luxe",
     desc: "Fudgy brownie with creamy Biscoff spread and a Lotus cookie for a spiced caramel twist.",
     ingredients: ["biscoff spread", "lotus biscuit"]
   },
   oreo: {
     price: 2.4,
-    name: "Cookies & dream",
+    name: "Cookies & Dream",
     desc: "Fudgy brownie with whipped cream and crushed Oreos, the perfect cookies & cream fix.",
     ingredients: ["cream", "oreo", "gelatin"]
   },
   strawb: {
     price: 2.4,
-    name: "Berry bliss",
+    name: "Berry Bliss",
     desc: "Fudgy brownie with silky cream and fresh strawberry slices for a fruity, dreamy bite.",
     ingredients: ["cream", "strawberries", "gelatin"]
   },
   marsh: {
     price: 2.4,
-    name: "Caramel carnival",
+    name: "Caramel Carnival",
     desc: "Fudgy brownie with rainbow-twisted marshmallows, crunchy hazelnuts, and gooey caramel drizzle.",
     ingredients: ["marshmallows", "hazelnuts", "caramel"]
   },
   chocMar: {
     price: 2.4,
-    name: "Choco carnival",
+    name: "Choco Carnival",
     desc: "Fudgy brownie with rainbow marshmallows, roasted hazelnuts, and rich chocolate drizzle.",
     ingredients: ["marshmallows", "hazelnuts", "chocolate syrup"]
   }
@@ -252,17 +252,17 @@ Object.entries(brownies).forEach(([id, brownie]) => {
   document.getElementById('browniesGrid').appendChild(brownieCard);
 });
 const cakeDictionary = [
-  {id: "mother",    title: "Mother's day"},
-  {id: 'almond',    title: 'Toasted almond'},
-  {id: 'strawb',    title: 'Berry birthday'},
-  {id: 'macadamia', title: 'Cashews & roses'},
-  {id: 'ferrero',   title: 'Ferrero strawberry'},
+  {id: "mother",    title: "Mother's Day"},
+  {id: 'almond',    title: 'Toasted Almond'},
+  {id: 'strawb',    title: 'Berry Birthday'},
+  {id: 'macadamia', title: 'Cashews & Roses'},
+  {id: 'ferrero',   title: 'Ferrero Strawberry'},
   {id: 'potter',    title: 'Harry Potter'},
-  {id: 'blue',      title: 'Blue bear'},
-  {id: 'butterfly', title: 'Butterfly garden'},
+  {id: 'blue',      title: 'Blue Bear'},
+  {id: 'butterfly', title: 'Butterfly Garden'},
   {id: 'chanel',    title: 'Chanel'},
-  {id: 'winter',    title: 'Winter wonderland'},
-  {id: 'rose',      title: 'Rose garden'},
+  {id: 'winter',    title: 'Winter Wonderland'},
+  {id: 'rose',      title: 'Rose Garden'},
 ];
 const grid = document.getElementById('cakesGrid');
 
