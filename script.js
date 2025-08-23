@@ -6,6 +6,7 @@ marble.onload = () => {
     btn.classList.add('loaded');
   });
 };
+document.getElementById("noJS").innerHTML = "Click on a box of six brownies to add it to your basket. You can order up to five boxes of each flavour. The brownie size is 7cm x 7cm."
 function showSection(sectionId, btn) {
   const fillMessage = document.getElementById("fillMessage");
   if (fillMessage) {
