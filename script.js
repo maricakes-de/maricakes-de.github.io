@@ -454,7 +454,7 @@ form.addEventListener('submit', e => {
   const clickedButton = e.submitter;
   if (clickedButton === buttons[0]) {
     // Open email
-    const id = "maricakes"
+    const id = "maricakes.de"
     const mailtoLink = 
     window.location.href = `mailto:${id}@gmail.com?subject=my MariCakes order&body=${encodeURIComponent(msg)}`;
   } else if (clickedButton === buttons[1]) {
