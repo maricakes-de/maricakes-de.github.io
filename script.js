@@ -362,14 +362,21 @@ document.querySelectorAll('label').forEach(label => {
   if (label.textContent.trim().startsWith('Preferred pick-up time')) {
     const input = label.querySelector('input[type="datetime-local"]');
     if (input) {
-      const now = new Date();
-      now.setDate(now.getDate() + 3);
-      now.setHours(16, 0, 0, 0);
-      const yyyy = now.getFullYear();
-      const mm = String(now.getMonth() + 1).padStart(2, '0');
-      const dd = String(now.getDate()).padStart(2, '0');
-      const hh = String(now.getHours()).padStart(2, '0');
-      const min = String(now.getMinutes()).padStart(2, '0');
+      nextSaturday = new Date();
+      nextSaturday.setDate(nextSaturday.getDate() + 3);
+      const daysUntilSaturday = (6 - nextSaturday.getDay() + 7) % 7 || 7; 
+      nextSaturday.setDate(nextSaturday.getDate() + daysUntilSaturday);
+      if ( nextSaturday >= new Date('2025-12-10') && nextSaturday <= new Date('2025-12-17') ) {
+        nextSaturday = new Date('2025-12-20');
+      } else if ( nextSaturday >= new Date('2025-12-24') && nextSaturday <= new Date('2026-01-03') ) {
+        nextSaturday = new Date('2026-01-10');
+      }
+      nextSaturday.setHours(16, 0, 0, 0);
+      const yyyy = nextSaturday.getFullYear();
+      const mm = String(nextSaturday.getMonth() + 1).padStart(2, '0');
+      const dd = String(nextSaturday.getDate()).padStart(2, '0');
+      const hh = String(nextSaturday.getHours()).padStart(2, '0');
+      const min = String(nextSaturday.getMinutes()).padStart(2, '0');
       input.value = `${yyyy}-${mm}-${dd}T${hh}:${min}`;
     }
   }
@@ -429,12 +436,19 @@ form.querySelector('input[type="datetime-local"]').addEventListener('input', (ev
     const now = new Date();
     const minTime = new Date(now.getTime() + 48 * 60 * 60 * 1000); // 48 hours later
     const maxTime = new Date(now);
+    const day = pickedTime.getDay(); // 0 = Sunday, 6 = Saturday
     maxTime.setMonth(maxTime.getMonth() + 6); // 6 months later
     const hours = pickedTime.getHours();
     if (pickedTime < minTime) {
       timeInput.setCustomValidity("Pick-up time must be at least 48 hours from now.");
     } else if (pickedTime > maxTime) {
       timeInput.setCustomValidity("Pick-up time must be within 6 months from now.");
+    } else if ( pickedTime >= new Date('2025-12-10') && pickedTime <= new Date('2025-12-17') ) {
+      timeInput.setCustomValidity("We will be on holiday from 2025 Dec 10-17. Please choose another date.");
+    } else if ( pickedTime >= new Date('2025-12-24') && pickedTime <= new Date('2026-01-03') ) {
+      timeInput.setCustomValidity("We will be on holiday from 2025 Dec 24 to 2026 Jan 3. Please choose another date.");
+    } else if (day !== 0 && day !== 6) {
+      timeInput.setCustomValidity("Pick-up time must be on a weekend (Saturday or Sunday).");
     } else if (hours < 9) {
       timeInput.setCustomValidity("Pick-up time must be after 09:00.");
     } else if (hours >= 17) {
