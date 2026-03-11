@@ -366,10 +366,8 @@ document.querySelectorAll('label').forEach(label => {
       nextSaturday.setDate(nextSaturday.getDate() + 3);
       const daysUntilSaturday = (6 - nextSaturday.getDay() + 7) % 7 || 7; 
       nextSaturday.setDate(nextSaturday.getDate() + daysUntilSaturday);
-      if ( nextSaturday >= new Date('2025-12-10') && nextSaturday <= new Date('2025-12-17') ) {
-        nextSaturday = new Date('2025-12-20');
-      } else if ( nextSaturday >= new Date('2025-12-24') && nextSaturday <= new Date('2026-01-03') ) {
-        nextSaturday = new Date('2026-01-10');
+      if ( nextSaturday >= new Date('2026-03-14') && nextSaturday <= new Date('2026-04-26') ) {
+        nextSaturday = new Date('2026-05-02');
       }
       nextSaturday.setHours(16, 0, 0, 0);
       const yyyy = nextSaturday.getFullYear();
@@ -443,10 +441,8 @@ form.querySelector('input[type="datetime-local"]').addEventListener('input', (ev
       timeInput.setCustomValidity("Pick-up time must be at least 48 hours from now.");
     } else if (pickedTime > maxTime) {
       timeInput.setCustomValidity("Pick-up time must be within 6 months from now.");
-    } else if ( pickedTime >= new Date('2025-12-10') && pickedTime <= new Date('2025-12-17') ) {
-      timeInput.setCustomValidity("We will be on holiday from 2025 Dec 10-17. Please choose another date.");
-    } else if ( pickedTime >= new Date('2025-12-24') && pickedTime <= new Date('2026-01-03') ) {
-      timeInput.setCustomValidity("We will be on holiday from 2025 Dec 24 to 2026 Jan 3. Please choose another date.");
+    } else if ( pickedTime >= new Date('2026-03-14') && pickedTime <= new Date('2026-04-26') ) {
+      timeInput.setCustomValidity("We will be on holiday from 2026 Mar 14 to 2026 Apr 26. Please choose another date.");
     } else if (day !== 0 && day !== 6) {
       timeInput.setCustomValidity("Pick-up time must be on a weekend (Saturday or Sunday).");
     } else if (hours < 9) {
