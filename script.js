@@ -34,7 +34,8 @@ function showSection(sectionId, btn) {
             <strong>I`+`BA`+`N:</strong> D`+`E0`+`2 10`+`01 100`+`1 25`+`06 44`+`91 2`+`6
             <button class="copy-btn" data-copy="D`+`E0`+`2 1`+`00`+`1 1`+`0`+`01 2`+`50`+`6 4`+`4`+`91 2`+`6" aria-label="Copy I`+`B`+`AN">Copy</button>
           </li>
-        <p>After transferring, please enter your b`+`a`+`nk acc`+`ount name in the form below, and attach a copy of the pa`+`yme`+`nt confirmation to your message.</p>`
+        <p>Or pay with P`+`ay`+`Pal: <a href="h`+`ttps://www.pa`+`ypal.me/mar`+`icakesde" target="_blank">pa`+`yp`+`al.me/mar`+`icakesde</a></p>
+        <p>After transferring, please enter your payment acc`+`ount name in the form below, and attach a copy of the pa`+`yme`+`nt confirmation to your message.</p>`
     }
   }
 }
