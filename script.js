@@ -170,6 +170,8 @@ Object.entries(brownies).forEach(([id, brownie]) => {
     if (parseInt(input6.value, 10) < parseInt(input6.max, 10)) {
       input6.value = parseInt(input6.value, 10) + 1;
       input6.dispatchEvent(new Event('input'));
+    } else {
+      alert('You can order up to five boxes of each flavour.')
     }
   };
   boxOf6.addEventListener('click', increaseQty6);
@@ -226,6 +228,8 @@ Object.entries(brownies).forEach(([id, brownie]) => {
     if ( parseInt(input.value, 10) < parseInt(input.max, 10) ) {
       input.value = parseInt(input.value, 10) + 1;
       input.dispatchEvent(new Event('input')); // trigger input listeners if any
+    } else {
+      alert('You can order up to five of any flavour.')
     }
   };
   img.addEventListener('click', increaseQty);
