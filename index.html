@@ -78,15 +78,16 @@
 
 <section id="brownies" class="active-section">
   <p id=noJS>This site requires JavaScript.</p>
-  <div class="brownies-grid" id="brownieBoxGrid"></div>
+  <div class="itemGrid" id="boxChoiceGrid"></div>
+  <p>Click on a box below to add it to your order. You can order up to five boxes of each flavour. The brownie size is 7cm x 7cm.</p>
+  <div class="itemGrid" id="boxGrid"></div>
 </section>
 
 <section id="assorted">
-  <p>Build your own box with assorted flavours. Click on a brownie to remove it from the box. The brownie size is 7cm x 7cm.</p>
-  <div class="brownies-grid" id="assortedGrid">
-  </div><br>
-  <p>Click on the brownies to add them to your box. You can order up to five of any flavour.</p>
-  <div class="brownies-grid" id="browniesGrid"></div>
+  <p>Your assorted boxes:</p>
+  <div class="itemGrid" id="brownieChoiceGrid"></div>
+  <p>Build your own box with assorted flavours. You can order up to five of any flavour. The brownie size is 7cm x 7cm.</p>
+  <div class="itemGrid" id="brownieGrid"></div>
 </section>
 
 <section id="custom">
@@ -108,7 +109,7 @@
     <li>Cream cheese</li>
   </ul>
   <p>Cake prices start around 30 EUR, depending on the design. Get in touch with us via email, instagram, or facebook to discuss your perfect cake.</p>
-  <div class="brownies-grid" id="cakesGrid"></div>
+  <div class="itemGrid" id="cakeGrid"></div>
 </section>
 
 <section id="order-section">
@@ -129,7 +130,6 @@
     <textarea maxlength="400" rows="4" placeholder="None"></textarea></label><br><br>
     <label>Preferred pick-up time:*<br>
       Must be a Saturday or Sunday least 48 hours from now, and between 9:00 and 17:00. <br>
-      We will be on holiday from 2026 Mar 14 to 2026 Apr 26.<br>
     <input type="datetime-local"></label><br><br>
     <label>Your name*:<br> 
     <input type="text" required></label><br><br>
@@ -144,4 +144,3 @@
 <script defer src="script.js"></script>
 </body>
 </html>
-

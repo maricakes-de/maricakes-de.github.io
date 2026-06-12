@@ -120,7 +120,7 @@ section {
 .active-section {
   display: block;
 }
-.brownies-grid {
+.itemGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 11em);
   gap: .4em;
@@ -160,6 +160,7 @@ section {
 }
 .mouseOverBright:hover {
   filter: brightness(1.2);
+  cursor: pointer;
 }
 .brownieBox {
   aspect-ratio: 1.4;

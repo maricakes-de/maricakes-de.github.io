@@ -6,7 +6,7 @@ marble.onload = () => {
     btn.classList.add('loaded');
   });
 };
-document.getElementById("noJS").innerHTML = "Click on a box of six brownies to add it to your basket. You can order up to five boxes of each flavour. The brownie size is 7cm x 7cm."
+document.getElementById("noJS").innerHTML = "Your brownie boxes:"
 function showSection(sectionId, btn) {
   const fillMessage = document.getElementById("fillMessage");
   if (fillMessage) {
@@ -157,23 +157,6 @@ Object.entries(brownies).forEach(([id, brownie]) => {
       shortIng6.style.display = "inline";
     }
   });
-  const label6 = document.createElement('label');
-  label6.className = 'quantityLbl';
-  label6.textContent = 'Quantity: ';
-  const quantity = document.createElement('span');
-  quantity.className = 'quantity';
-  quantity.textContent = `0`;
-  const space = document.createElement('span');
-  space.textContent = ` `;
-  const minusBtn = document.createElement('button');
-  minusBtn.type = 'button';
-  minusBtn.textContent = '−';
-  minusBtn.addEventListener('click', () => {
-    if (parseInt(input6.value, 10) > parseInt(input6.min, 10)) {
-      input6.value = parseInt(input6.value, 10) - 1;
-      input6.dispatchEvent(new Event('input'));
-    }
-  });
   const input6 = document.createElement('input');
   input6.type = 'number';
   input6.className = 'brownie-input';
@@ -181,11 +164,7 @@ Object.entries(brownies).forEach(([id, brownie]) => {
   input6.min = 0;
   input6.max = 5;
   input6.value = 0;
-  label6.appendChild(quantity);
-  label6.appendChild(space);
-  label6.appendChild(minusBtn);
-  label6.appendChild(input6);
-  txtBox6.appendChild(label6);
+  txtBox6.appendChild(input6);
   boxCard.appendChild(txtBox6);
   const increaseQty6 = () => {
     if (parseInt(input6.value, 10) < parseInt(input6.max, 10)) {
@@ -194,7 +173,7 @@ Object.entries(brownies).forEach(([id, brownie]) => {
     }
   };
   boxOf6.addEventListener('click', increaseQty6);
-  document.getElementById('brownieBoxGrid').appendChild(boxCard);
+  document.getElementById('boxGrid').appendChild(boxCard);
 });
 Object.entries(brownies).forEach(([id, brownie]) => {
   const brownieCard = document.createElement('div');
@@ -251,7 +230,7 @@ Object.entries(brownies).forEach(([id, brownie]) => {
   };
   img.addEventListener('click', increaseQty);
   img.classList.add('mouseOverBright');
-  document.getElementById('browniesGrid').appendChild(brownieCard);
+  document.getElementById('brownieGrid').appendChild(brownieCard);
 });
 const cakeDictionary = [
   {id: "mother",    title: "Mother's Day"},
@@ -266,7 +245,7 @@ const cakeDictionary = [
   {id: 'winter',    title: 'Winter Wonderland'},
   {id: 'rose',      title: 'Rose Garden'},
 ];
-const grid = document.getElementById('cakesGrid');
+const grid = document.getElementById('cakeGrid');
 
 cakeDictionary.forEach(cake => {
   const card = document.createElement('div');
@@ -290,9 +269,11 @@ function updateOrderSummary() {
   let total = 0;
   let boxCount = 0;
   let assortedCount = 0;
-  document.getElementById('assortedGrid').innerHTML = '';
+  document.getElementById('boxChoiceGrid').innerHTML = '';
+  document.getElementById('brownieChoiceGrid').innerHTML = '';
   let orderedList = [];
-  let boxOf6;
+  let uniformBox;
+  let assortedBox;
   document.querySelectorAll('.brownie-input').forEach(input => {
     let qty = Math.min(Math.max(parseInt(input.value) || 0, 0), 5); // 0–5 only
     input.value = qty;
@@ -305,30 +286,42 @@ function updateOrderSummary() {
     }
     if (qty > 0) {
       const brownieId = input.name.substring(1)
+      const decreaseQty = () => {
+        if ( 0 < parseInt(input.value, 10) ) {
+          input.value = parseInt(input.value, 10) - 1;
+          input.dispatchEvent(new Event('input')); // trigger input listeners if any
+        }
+      };
       if (input.name.startsWith("B")) {
+        for (let step = 0; step < qty; step++) {
+          uniformBox = document.createElement('div');
+          uniformBox.className = 'brownieBox';
+          uniformBox.classList.add('mouseOverBright');
+          document.getElementById('boxChoiceGrid').appendChild(uniformBox);
+          for (let step = 0; step < 6; step++) {
+            const img = document.createElement('img');
+            img.src = `brownies/${brownieId}Top.avif`;
+            img.alt = `${brownies[brownieId].name} brownie top view`;
+            img.addEventListener('click', decreaseQty);
+            uniformBox.appendChild(img);
+          }
+        }
         boxCount +=qty;
         orderedList.push(`${qty} x ${5*brownies[brownieId].price} EUR ${brownies[brownieId].name} box`);
         total += 5*brownies[brownieId].price * qty;
       } else {
-        const decreaseQty = () => {
-          if ( 0 < parseInt(input.value, 10) ) {
-            input.value = parseInt(input.value, 10) - 1;
-            input.dispatchEvent(new Event('input')); // trigger input listeners if any
-          }
-        };
         for (let step = 0; step < qty; step++) {
           if (assortedCount%6 === 0) {
-            boxOf6 = document.createElement('div');
-            boxOf6.className = 'brownieBox';
-            document.getElementById('assortedGrid').appendChild(boxOf6);
+            assortedBox = document.createElement('div');
+            assortedBox.className = 'brownieBox';
+            document.getElementById('brownieChoiceGrid').appendChild(assortedBox);
           }
           const img = document.createElement('img');
           img.src = `brownies/${brownieId}Top.avif`;
-          console.log('329',img.src)
           img.alt = `${brownies[brownieId].name} brownie top view`;
           img.addEventListener('click', decreaseQty);
           img.classList.add('mouseOverBright');
-          boxOf6.appendChild(img);
+          assortedBox.appendChild(img);
           assortedCount++;
         }
         orderedList.push(`${qty} x ${brownies[brownieId].price} EUR ${brownies[brownieId].name}`);
@@ -336,17 +329,23 @@ function updateOrderSummary() {
       }
     }
   });
+  if (!boxCount) {
+    uniformBox = document.createElement('div');
+    uniformBox.className = 'brownieBox';
+    uniformBox.innerHTML = 'Empty';
+    document.getElementById('boxChoiceGrid').appendChild(uniformBox);
+  }
   if (!assortedCount) {
-    boxOf6 = document.createElement('div');
-    boxOf6.className = 'brownieBox';
-    boxOf6.innerHTML = 'Your box is empty';
-    document.getElementById('assortedGrid').appendChild(boxOf6);
+    assortedBox = document.createElement('div');
+    assortedBox.className = 'brownieBox';
+    assortedBox.innerHTML = 'Empty';
+    document.getElementById('brownieChoiceGrid').appendChild(assortedBox);
   } else if (assortedCount%6) {
     let fillMessage = document.createElement('div');
     fillMessage.className = 'textBox'; 
     fillMessage.id = 'fillMessage'; 
     fillMessage.innerHTML = 'Fill your box!';
-    boxOf6.appendChild(fillMessage);
+    assortedBox.appendChild(fillMessage);
   }
   const orderedBrownies = document.getElementById('orderedBrownies');
   orderedBrownies.textContent = orderedList.join('\n');
