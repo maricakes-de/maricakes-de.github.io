@@ -465,14 +465,13 @@ form.addEventListener('submit', e => {
   const msg = buildMessage(form);
   if (!form.reportValidity()) return;
   const buttons = form.querySelectorAll('button');
-  const clickedButton = e.submitter;
-  if (clickedButton === buttons[0]) {
-    // Open email
-    const id = "maricakes.de"
-    const mailtoLink = 
-    window.location.href = `mailto:${id}@gmail.com?subject=my MariCakes order&body=${encodeURIComponent(msg)}`;
-  } else if (clickedButton === buttons[1]) {
-    // Copy to clipboard
+  const clickedButton = e.submitter ? e.submitter.value : null;
+  if (clickedButton === "email") {
+    const id = "maricakes.de";
+    window.location.href =
+      `mailto:${id}@gmail.com?subject=my MariCakes order&body=${encodeURIComponent(msg)}`;
+  }
+  if (clickedButton === "copy") {
     navigator.clipboard.writeText(msg);
   }
 });
