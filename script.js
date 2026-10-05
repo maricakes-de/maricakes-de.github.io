@@ -436,13 +436,13 @@ form.querySelector('input[type="datetime-local"]').addEventListener('input', (ev
   if (timeInput.value) {
     const pickedTime = new Date(timeInput.value);
     const now = new Date();
-    const minTime = new Date(now.getTime() + 48 * 60 * 60 * 1000); // 48 hours later
+    const minTime = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000); // one week later
     const maxTime = new Date(now);
     const day = pickedTime.getDay(); // 0 = Sunday, 6 = Saturday
     maxTime.setMonth(maxTime.getMonth() + 6); // 6 months later
     const hours = pickedTime.getHours();
     if (pickedTime < minTime) {
-      timeInput.setCustomValidity("Pick-up time must be at least 48 hours from now.");
+      timeInput.setCustomValidity("Pick-up time must be at least one week from now.");
     } else if (pickedTime > maxTime) {
       timeInput.setCustomValidity("Pick-up time must be within 6 months from now.");
     } else if ( pickedTime >= new Date('2026-03-14') && pickedTime <= new Date('2026-04-26') ) {
